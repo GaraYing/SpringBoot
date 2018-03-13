@@ -1,6 +1,8 @@
 package com.springboot;
 
 import com.springboot.service.UserService;
+import com.springboot.service.WorkerRepository;
+import com.springboot.vo.Worker;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -54,5 +56,44 @@ public class SbDemo6ApplicationTests {
 		Assert.assertEquals(3, userSerivce.getAllUsers().intValue());
 
 	}
+
+    @Autowired
+    private WorkerRepository workerRepository;
+
+    @Test
+    public void test() throws Exception {
+
+        // 创建10条记录
+        workerRepository.save(new Worker("AAA", 10));
+        workerRepository.save(new Worker("BBB", 20));
+        workerRepository.save(new Worker("CCC", 30));
+        workerRepository.save(new Worker("DDD", 40));
+        workerRepository.save(new Worker("EEE", 50));
+        workerRepository.save(new Worker("FFF", 60));
+        workerRepository.save(new Worker("GGG", 70));
+        workerRepository.save(new Worker("HHH", 80));
+        workerRepository.save(new Worker("III", 90));
+        workerRepository.save(new Worker("JJJ", 100));
+
+        // 测试findAll, 查询所有记录
+        Assert.assertEquals(10, userRepository.findAll().size());
+
+        // 测试findByName, 查询姓名为FFF的Worker
+        Assert.assertEquals(60, userRepository.findByName("FFF").getAge().longValue());
+
+        // 测试findUser, 查询姓名为FFF的Worker
+        Assert.assertEquals(60, userRepository.findWorker("FFF").getAge().longValue());
+
+        // 测试findByNameAndAge, 查询姓名为FFF并且年龄为60的User
+        Assert.assertEquals("FFF", userRepository.findByNameAndAge("FFF", 60).getName());
+
+        // 测试删除姓名为AAA的Worker
+        userRepository.delete(userRepository.findByName("AAA"));
+
+        // 测试findAll, 查询所有记录, 验证上面的删除是否成功
+        Assert.assertEquals(9, userRepository.findAll().size());
+
+    }
+
 
 }
