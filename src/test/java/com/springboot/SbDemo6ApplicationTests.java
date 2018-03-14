@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+/*@EnableJpaRepositories(repositoryFactoryBeanClass=CustomRepositoryFactoryBean.class)*/
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class SbDemo6ApplicationTests {
@@ -61,7 +62,7 @@ public class SbDemo6ApplicationTests {
     private WorkerRepository workerRepository;
 
     @Test
-    public void test() throws Exception {
+    public void test2() throws Exception {
 
         // 创建10条记录
         workerRepository.save(new Worker("AAA", 10));
@@ -76,22 +77,22 @@ public class SbDemo6ApplicationTests {
         workerRepository.save(new Worker("JJJ", 100));
 
         // 测试findAll, 查询所有记录
-        Assert.assertEquals(10, userRepository.findAll().size());
+        Assert.assertEquals(10, workerRepository.findAll().size());
 
         // 测试findByName, 查询姓名为FFF的Worker
-        Assert.assertEquals(60, userRepository.findByName("FFF").getAge().longValue());
+        Assert.assertEquals(60, workerRepository.findByName("FFF").getAge().longValue());
 
         // 测试findUser, 查询姓名为FFF的Worker
-        Assert.assertEquals(60, userRepository.findWorker("FFF").getAge().longValue());
+        Assert.assertEquals(60, workerRepository.findWorker("FFF").getAge().longValue());
 
         // 测试findByNameAndAge, 查询姓名为FFF并且年龄为60的User
-        Assert.assertEquals("FFF", userRepository.findByNameAndAge("FFF", 60).getName());
+        Assert.assertEquals("FFF", workerRepository.findByNameAndAge("FFF", 60).getName());
 
         // 测试删除姓名为AAA的Worker
-        userRepository.delete(userRepository.findByName("AAA"));
+        workerRepository.delete(workerRepository.findByName("AAA"));
 
         // 测试findAll, 查询所有记录, 验证上面的删除是否成功
-        Assert.assertEquals(9, userRepository.findAll().size());
+        Assert.assertEquals(9, workerRepository.findAll().size());
 
     }
 

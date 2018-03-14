@@ -1,9 +1,9 @@
 package com.springboot.vo;
 
-import org.springframework.data.annotation.Id;
-
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
 public class Worker {
@@ -13,10 +13,10 @@ public class Worker {
     private Integer workerId;
 
     @Column(nullable = false)
-    private String workName;
+    private String name;
 
     @Column(nullable = false)
-    private Integer workerAge;
+    private Integer age;
 
     public Integer getWorkerId() {
         return workerId;
@@ -26,27 +26,27 @@ public class Worker {
         this.workerId = workerId;
     }
 
-    public String getWorkName() {
-        return workName;
+    public String getName() {
+        return name;
     }
 
-    public void setWorkName(String workName) {
-        this.workName = workName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Integer getWorkerAge() {
-        return workerAge;
+    public Integer getAge() {
+        return age;
     }
 
-    public void setWorkerAge(Integer workerAge) {
-        this.workerAge = workerAge;
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
     public Worker() {
     }
 
-    public Worker(String workName, Integer workerAge) {
-        this.workName = workName;
-        this.workerAge = workerAge;
+    public Worker(String name, Integer age) {
+        this.name = name;
+        this.age = age;
     }
 }
