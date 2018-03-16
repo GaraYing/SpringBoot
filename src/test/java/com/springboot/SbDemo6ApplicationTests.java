@@ -1,7 +1,10 @@
 package com.springboot;
 
+import com.springboot.service.UserRepository;
 import com.springboot.service.UserService;
 import com.springboot.service.WorkerRepository;
+import com.springboot.vo.User2;
+import com.springboot.vo.User3;
 import com.springboot.vo.Worker;
 import org.junit.Assert;
 import org.junit.Before;
@@ -9,6 +12,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /*@EnableJpaRepositories(repositoryFactoryBeanClass=CustomRepositoryFactoryBean.class)*/
@@ -21,40 +26,40 @@ public class SbDemo6ApplicationTests {
 	}
 
 	@Autowired
-	private UserService userSerivce;
+	private UserService userService;
 
 	@Before
 	public void setUp() {
 		// 准备，清空user表
-		userSerivce.deleteAllUsers();
+		userService.deleteAllUsers();
 	}
 
 	@Test
 	public void test() throws Exception {
 		// 插入5个用户
-		userSerivce.create("a", 1);
-		userSerivce.create("b", 2);
-		userSerivce.create("c", 3);
-		userSerivce.create("d", 4);
-		userSerivce.create("e", 5);
+		userService.create("a", 1);
+		userService.create("b", 2);
+		userService.create("c", 3);
+		userService.create("d", 4);
+		userService.create("e", 5);
 
-		userSerivce.updateUsers("e", 99);
+		userService.updateUsers("e", 99);
 
 		// 查数据库，应该有5个用户
 
 		System.out.println("-=========***********=-===");
-		Assert.assertEquals(5, userSerivce.getAllUsers().intValue());
+		Assert.assertEquals(5, userService.getAllUsers().intValue());
 		System.out.println("-========***********-=-===");
 
 		// 删除两个用户
-		userSerivce.deleteByName("a");
-		userSerivce.deleteByName("b");
+		userService.deleteByName("a");
+		userService.deleteByName("b");
 
 //		userSerivce.deleteAllUsers();
 
 
 		// 查数据库，应该有5个用户
-		Assert.assertEquals(3, userSerivce.getAllUsers().intValue());
+		Assert.assertEquals(3, userService.getAllUsers().intValue());
 
 	}
 
@@ -96,5 +101,55 @@ public class SbDemo6ApplicationTests {
 
     }
 
+    @Autowired
+	private StringRedisTemplate stringRedisTemplate;
+
+    @Autowired
+	private RedisTemplate redisTemplate;
+
+    @Test
+    public void testRedis(){
+		// 保存字符串
+		stringRedisTemplate.opsForValue().set("aaa", "111");
+		Assert.assertEquals("111", stringRedisTemplate.opsForValue().get("aaa"));
+
+		// 保存对象
+		User2 user = new User2("超人", 20);
+		redisTemplate.opsForValue().set(user.getUserName(), user);
+
+		user = new User2("蝙蝠侠", 30);
+		redisTemplate.opsForValue().set(user.getUserName(), user);
+
+		user = new User2("蜘蛛侠", 40);
+		redisTemplate.opsForValue().set(user.getUserName(), user);
+
+		Assert.assertEquals(20, ((User2)redisTemplate.opsForValue().get("超人")).getAge().longValue());
+		Assert.assertEquals(30, ((User2)redisTemplate.opsForValue().get("蝙蝠侠")).getAge().longValue());
+		Assert.assertEquals(40, ((User2)redisTemplate.opsForValue().get("蜘蛛侠")).getAge().longValue());
+
+	}
+
+	@Autowired
+	private UserRepository userRepository;
+
+	@Test
+	public void testMongoDB(){
+
+			// 创建三个User，并验证User总数
+			userRepository.save(new User3(1L, "didi", 30));
+			userRepository.save(new User3(2L, "mama", 40));
+			userRepository.save(new User3(3L, "kaka", 50));
+			Assert.assertEquals(3, userRepository.findAll().size());
+
+			// 删除一个User，再验证User总数
+			User3 u = userRepository.findOne(1L);
+			userRepository.delete(u);
+			Assert.assertEquals(2, userRepository.findAll().size());
+
+			// 删除一个User，再验证User总数
+			u = userRepository.findByUserName("mama");
+			userRepository.delete(u);
+			Assert.assertEquals(1, userRepository.findAll().size());
+	}
 
 }
