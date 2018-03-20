@@ -3,6 +3,7 @@ package com.gara.sb_demo7.vo;
 import org.apache.ibatis.annotations.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Mapper
@@ -27,5 +28,17 @@ public interface UserMapper {
 
     @Delete("DELETE FROM user WHERE id =#{id}")
     void delete(Long id);
+
+    /**
+     * 多表关联查询
+     * @return
+     */
+    @Results({
+            @Result(property = "name", column = "name"),
+            @Result(property = "age", column = "age")
+    })
+    @Select("SELECT name, age FROM user")
+    List<User> findAll();
+
 
 }

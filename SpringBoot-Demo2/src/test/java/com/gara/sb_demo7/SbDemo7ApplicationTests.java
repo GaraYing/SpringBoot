@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RunWith(SpringRunner.class)
@@ -56,5 +57,13 @@ public class SbDemo7ApplicationTests {
 		Assert.assertEquals(null, u);
 	}
 
-
+	@Test
+	@Rollback
+	public void testUserMapper2() throws Exception {
+		List<User> userList = userMapper.findAll();
+		for(User user : userList) {
+			Assert.assertEquals(null, user.getId());
+			Assert.assertNotEquals(null, user.getName());
+		}
+	}
 }
