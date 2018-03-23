@@ -66,4 +66,10 @@ public class SbDemo7ApplicationTests {
 			Assert.assertNotEquals(null, user.getName());
 		}
 	}
+
+	@Test
+	@Rollback
+	public void testFlyway(){
+
+	}
 }

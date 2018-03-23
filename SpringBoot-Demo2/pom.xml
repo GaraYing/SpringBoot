@@ -64,5 +64,10 @@
 		</plugins>
 	</build>
 
+	<dependency>
+		<groupId>org.flywaydb</groupId>
+		<artifactId>flyway-core</artifactId>
+		<version>5.0.3</version>
+	</dependency>
 
 </project>
