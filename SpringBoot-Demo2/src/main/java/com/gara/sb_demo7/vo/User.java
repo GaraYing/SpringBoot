@@ -2,6 +2,7 @@ package com.gara.sb_demo7.vo;
 
 public class User {
 
+
     private Long id;
     private String name;
     private Integer age;

@@ -1,8 +1,11 @@
 package com.gara.sb_demo7;
 
 import com.gara.sb_demo7.vo.User;
+import com.gara.sb_demo7.vo.User2;
 import com.gara.sb_demo7.vo.UserMapper;
+import com.gara.sb_demo7.web.UserRepository;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +22,12 @@ import java.util.Map;
 @SpringBootTest
 @Transactional
 public class SbDemo7ApplicationTests {
+
+
+	@Before
+	public void setUp() {
+		userRepository.deleteAll();
+	}
 
 
 	@Autowired
@@ -65,6 +74,30 @@ public class SbDemo7ApplicationTests {
 			Assert.assertEquals(null, user.getId());
 			Assert.assertNotEquals(null, user.getName());
 		}
+	}
+
+	@Autowired
+	private UserRepository userRepository;
+
+
+	@Test
+	public void testMongoDb(){
+		// 创建三个User，并验证User总数
+		userRepository.save(new User2(1L, "didi", 30));
+		userRepository.save(new User2(2L, "mama", 40));
+		userRepository.save(new User2(3L, "kaka", 50));
+		Assert.assertEquals(3, userRepository.findAll().size());
+
+		// 删除一个User，再验证User总数
+		User2 u = userRepository.findByUsername("didi");
+		userRepository.delete(u);
+		Assert.assertEquals(2, userRepository.findAll().size());
+
+		// 删除一个User，再验证User总数
+		u = userRepository.findByUsername("mama");
+		userRepository.delete(u);
+		Assert.assertEquals(1, userRepository.findAll().size());
+
 	}
 
 	@Test
