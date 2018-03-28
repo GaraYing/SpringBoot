@@ -1,5 +1,6 @@
 package com.gara.sb_demo7;
 
+import com.gara.sb_demo7.vo.Task;
 import com.gara.sb_demo7.vo.User;
 import com.gara.sb_demo7.vo.User2;
 import com.gara.sb_demo7.vo.UserMapper;
@@ -17,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Future;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -105,4 +107,36 @@ public class SbDemo7ApplicationTests {
 	public void testFlyway(){
 
 	}
+
+	@Autowired
+	private Task task;
+
+	@Test
+	public void testTask() throws Exception{
+		task.doTaskOne();
+		task.doTaskTwo();
+		task.doTaskThree();
+	}
+
+	@Test
+	public void testTaskAsync() throws Exception{
+		long start = System.currentTimeMillis();
+
+		Future<String> task1 = task.doTaskOneAsync();
+		Future<String> task2 = task.doTaskTwoAsync();
+		Future<String> task3 = task.doTaskThreeAsync();
+
+		while(true) {
+			if(task1.isDone() && task2.isDone() && task3.isDone()) {
+				// 三个任务都调用完成，退出循环等待
+				break;
+			}
+			Thread.sleep(1000);
+		}
+
+		long end = System.currentTimeMillis();
+
+		System.out.println("任务全部完成，总耗时：" + (end - start) + "毫秒");
+	}
+
 }
