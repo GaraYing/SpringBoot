@@ -1,9 +1,7 @@
 package com.gara.yz.sb_log.web;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 小哥哥加点注释吧~~
@@ -12,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2018/03/28 17:14
  */
 
-@RestController
+@Controller
 public class HelloController {
 
     @RequestMapping(value = "/hello" ,method = RequestMethod.GET)
@@ -20,4 +18,18 @@ public class HelloController {
         return "hello " + name;
     }
 
+    @RequestMapping("/")
+    public String index(){
+        return "index";
+    }
+
+    @RequestMapping("/hi")
+    public String hi(){
+        return "hi";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login() {
+        return "login";
+    }
 }
