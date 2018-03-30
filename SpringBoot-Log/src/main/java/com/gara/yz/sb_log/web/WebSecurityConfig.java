@@ -1,6 +1,11 @@
 package com.gara.yz.sb_log.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 /**
  * 小哥哥加点注释吧~~
@@ -9,9 +14,32 @@ import org.springframework.context.annotation.Configuration;
  * @date 2018/03/29 19:56
  */
 
-//@Configuration
-//@EnableWebSecurity
-public class WebSecurityConfig  {
+@Configuration
+@EnableWebSecurity
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .authorizeRequests()
+                    .antMatchers("/", "/home").permitAll()
+                    .anyRequest().authenticated()
+                    .and()
+                .formLogin()
+                    .loginPage("/login")
+                    .permitAll()
+                    .and()
+                .logout()
+                    .permitAll();
+    }
 
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth
+                .inMemoryAuthentication()
+                .passwordEncoder(new MyPasswordEncoder())
+                .withUser("Gary")
+                .password("123456")
+                .roles("USER");
+    }
 }
