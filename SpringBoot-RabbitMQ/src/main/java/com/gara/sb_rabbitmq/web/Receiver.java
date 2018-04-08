@@ -17,8 +17,8 @@ import org.springframework.stereotype.Component;
 @RabbitListener(queues = "hello")
 public class Receiver {
 
-    @Autowired
-    private AmqpTemplate rabbitTemplate;
+//    @Autowired
+//    private AmqpTemplate rabbitTemplate;
 
     @RabbitHandler
     public void process(String hell0){

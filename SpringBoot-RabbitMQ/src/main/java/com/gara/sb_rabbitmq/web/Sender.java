@@ -22,7 +22,9 @@ public class Sender {
     public void send(){
 
         String context = "hello" + new Date();
+        System.out.println("-=-=-=-=-=-=-=-=");
         System.out.println("Sender:" + context);
+        System.out.println("-=-=-=-=-=-=-=-=");
 
         this.rabbitTemplate.convertAndSend("hello",context);
     }

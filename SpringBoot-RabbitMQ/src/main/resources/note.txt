@@ -1,0 +1,14 @@
+SpringBoot 整合RabbitMQ错误记录
+
+1. Exception in thread "main" java.io.IOException……
+                   Caused by: com.rabbitmq.client.ShutdownSignalException: connection error; protocol method: #method<connection.close>(reply-code=530, reply-text=NOT_ALLOWED - access to vhost '/' refused for user 'springboot'……
+                   Caused by: com.rabbitmq.client.ShutdownSignalException: connection error;
+   原因分析：用户没有对应Virtual Hosts 的操作权限
+
+   解决方案：添加登录用户权限 rabbitmqctl  set_permissions -p / mq '.*' '.*' '.*'  或者登录RabbitMQ管理页面http://localhost:15672/#/ 添加用户权限
+
+2.  protocol method reply-text=NOT_FOUND - no queue 'hello' in vhost '/',
+
+    原因分析：Virtual Hosts '/'中没有添加 名称为'hello'的queue
+
+    解决方案：登录RabbitMQ管理页面http://localhost:15672/， 在对应用户下Add Queue
