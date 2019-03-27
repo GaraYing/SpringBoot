@@ -11,7 +11,7 @@ public class SpringBootJdbcDemoApplicationTests {
 
     @Test
     public void contextLoads() {
-    }
 
+    }
 }
 

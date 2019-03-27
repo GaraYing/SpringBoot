@@ -8,6 +8,7 @@ public class SpringBootJdbcDemoApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SpringBootJdbcDemoApplication.class, args);
+//        SpringApplication.setWebApplicationType(WebApplicationType.REACTIVE);
     }
 
 }
