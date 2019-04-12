@@ -4,7 +4,11 @@ spring:
     name: root
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver
-
+  devtools:
+    restart:
+      enabled: true
+      additional-paths: src/main/java
+      exclude: WEB-INF/**
 fdd:
   oss: ali
   sv: bjh*&*&**************sssssssss
