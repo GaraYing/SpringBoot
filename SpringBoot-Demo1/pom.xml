@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.gara</groupId>
-	<artifactId>sb_demo6</artifactId>
+	<artifactId>sb_demo1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>sb_demo6</name>
+	<name>sb_demo1</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
