@@ -23,7 +23,7 @@ import java.util.concurrent.Future;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @Transactional
-public class SbDemo7ApplicationTests {
+public class SbDemo2ApplicationTests {
 
 
 	@Before
