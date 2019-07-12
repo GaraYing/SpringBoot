@@ -8,9 +8,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling	// 定时任务
 @EnableAsync // 异步调用
 @SpringBootApplication
-public class SbDemo7Application {
+public class SbDemo2Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SbDemo7Application.class, args);
+		SpringApplication.run(SbDemo2Application.class, args);
 	}
 }
