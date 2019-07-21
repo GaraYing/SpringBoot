@@ -1,15 +1,21 @@
-## **Redis源码**
+## **Redis源码学习路径**
 
-1. 找到spring-boot-autoconfig jar
+1. `@SpringBootApplication`
 
-2. `spring.factories`
+2. `@EnableAutoConfiguration`
 
-3. `RedisAutoConfiguration`
+3. `@Import(AutoConfigurationImportSelector.class)`
 
-4. `@Import()`
+4. 找到`spring-boot-autoconfig-XXXX.jar`
 
-5.  初始化`JedisConnectionConfiguration(RedisProperties ...)`
+5. `spring.factories`
 
-6. `JedisConnectionFactory`
+6. `RedisAutoConfiguration`
 
-7. 初始化`RedisConnectionFactory`
+7. `@Import(XXX.class)`
+
+8.  初始化`JedisConnectionConfiguration(RedisProperties ...)`
+
+9. `JedisConnectionFactory`
+
+10. 初始化`RedisConnectionFactory`
