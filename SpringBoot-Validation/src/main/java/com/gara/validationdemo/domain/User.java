@@ -1,10 +1,14 @@
 package com.gara.validationdemo.domain;
 
 import com.gara.validationdemo.validation.constraints.ValidCardNum;
+import lombok.Data;
+import lombok.experimental.SuperBuilder;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 
+@SuperBuilder
+@Data
 public class User {
 
     @Max(value = 10000)
@@ -17,28 +21,4 @@ public class User {
 //    @ValidCardNum(message = "卡号必须以\"GARA\"开头 , 以数字结尾")
     @ValidCardNum
     private String cardNum;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getCardNum() {
-        return cardNum;
-    }
-
-    public void setCardNum(String cardNum) {
-        this.cardNum = cardNum;
-    }
 }
