@@ -1,0 +1,8 @@
+server:
+  port: 9999
+#shiro:
+#  enabled: true
+spring:
+  profiles:
+#    active: dev
+    include: shiro
