@@ -1,5 +1,6 @@
 package com.gara.springbootshiro.realm;
 
+import com.gara.springbootshiro.cache.MySimpleByteSource;
 import com.gara.springbootshiro.entity.User;
 import com.gara.springbootshiro.service.PermService;
 import com.gara.springbootshiro.service.RoleService;
@@ -86,7 +87,8 @@ public class CustomRealm extends AuthorizingRealm {
 
         SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(userDB, userDB.getPwd(), getName());
         if (userDB.getSalt() != null) {
-            info.setCredentialsSalt(ByteSource.Util.bytes(userDB.getSalt()));
+//            info.setCredentialsSalt(ByteSource.Util.bytes(userDB.getSalt()));
+            info.setCredentialsSalt(new MySimpleByteSource(userDB.getSalt()));
         }
 
         return info;

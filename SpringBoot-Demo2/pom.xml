@@ -3,15 +3,6 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.gara</groupId>
-	<artifactId>sb_demo7</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
-	<!--<packaging>jar</packaging>-->
-
-	<name>sb_demo7</name>
-	<description>Demo project for Spring Boot</description>
-
 	<parent>
 		<groupId>com.gara.demo</groupId>
 		<artifactId>parent</artifactId>
@@ -19,7 +10,13 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-
+	<groupId>com.gara</groupId>
+	<artifactId>sb_demo2</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+	<!--<packaging>jar</packaging>-->
+	<name>sb_demo2</name>
+	<description>Demo project for Spring Boot</description>
 
 	<dependencies>
 
@@ -46,6 +43,11 @@
 			<version>5.1.21</version>
 		</dependency>
 
+	<!--	<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+			<version>6.0.6</version>
+		</dependency>-->
 	</dependencies>
 
 	<build>
@@ -56,11 +58,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
-	<dependency>
-		<groupId>org.flywaydb</groupId>
-		<artifactId>flyway-core</artifactId>
-		<version>5.0.3</version>
-	</dependency>
 
 </project>

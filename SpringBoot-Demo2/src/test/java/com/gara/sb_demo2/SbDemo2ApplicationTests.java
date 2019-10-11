@@ -1,10 +1,10 @@
-package com.gara.sb_demo7;
+package com.gara.sb_demo2;
 
-import com.gara.sb_demo7.vo.Task;
-import com.gara.sb_demo7.vo.User;
-import com.gara.sb_demo7.vo.User2;
-import com.gara.sb_demo7.vo.UserMapper;
-import com.gara.sb_demo7.web.UserRepository;
+import com.gara.sb_demo2.vo.Task;
+import com.gara.sb_demo2.vo.User;
+import com.gara.sb_demo2.vo.User2;
+import com.gara.sb_demo2.vo.UserMapper;
+import com.gara.sb_demo2.web.UserRepository;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,9 +15,7 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.Future;
 
 @RunWith(SpringRunner.class)

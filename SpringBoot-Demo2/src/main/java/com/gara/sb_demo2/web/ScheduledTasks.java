@@ -1,4 +1,4 @@
-package com.gara.sb_demo7.web;
+package com.gara.sb_demo2.web;
 
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;

@@ -2,11 +2,13 @@ package com.gara.springbootshiro.service;
 
 
 import com.gara.springbootshiro.entity.User;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.Random;
 
+@Lazy
 @Service
 public class UserService {
     /**
@@ -22,6 +24,7 @@ public class UserService {
         user.setSalt("wxKYXuTPST5SG0jMQzVPsg==");//加密密码的盐值
         user.setUid(new Random().nextLong());//随机分配一个id
         user.setCreated(new Date());
+        user.setUpdated(new Date());
         return user;
     }
 }

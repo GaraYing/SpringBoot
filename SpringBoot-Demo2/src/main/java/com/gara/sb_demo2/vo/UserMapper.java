@@ -1,8 +1,7 @@
-package com.gara.sb_demo7.vo;
+package com.gara.sb_demo2.vo;
 
 import org.apache.ibatis.annotations.*;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 

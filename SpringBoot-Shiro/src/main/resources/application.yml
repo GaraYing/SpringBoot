@@ -6,3 +6,12 @@ spring:
   profiles:
 #    active: dev
     include: shiro
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password:
+  cache:
+    cache-names: cache1
+    redis:
+      time-to-live: 3600000

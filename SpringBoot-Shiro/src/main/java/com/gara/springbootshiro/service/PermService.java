@@ -1,10 +1,12 @@
 package com.gara.springbootshiro.service;
 
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Lazy
 @Service
 public class PermService {
 

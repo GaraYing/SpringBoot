@@ -1,6 +1,6 @@
-package com.gara.sb_demo7.web;
+package com.gara.sb_demo2.web;
 
-import com.gara.sb_demo7.vo.User2;
+import com.gara.sb_demo2.vo.User2;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 

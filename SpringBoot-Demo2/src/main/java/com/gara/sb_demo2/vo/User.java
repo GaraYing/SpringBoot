@@ -1,4 +1,4 @@
-package com.gara.sb_demo7.vo;
+package com.gara.sb_demo2.vo;
 
 public class User {
 
