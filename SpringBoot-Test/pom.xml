@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.gara</groupId>
-    <artifactId>test</artifactId>
+    <artifactId>sb-test</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>test</name>
+    <name>sb-test</name>
     <description>Demo project for Spring Boot</description>
 
     <dependencies>

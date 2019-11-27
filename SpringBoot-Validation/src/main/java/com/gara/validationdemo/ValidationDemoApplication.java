@@ -1,7 +1,6 @@
 package com.gara.validationdemo;
 
 import com.gara.validationdemo.controller.UserControllerInterceptor;
-import com.gara.validationdemo.domain.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
