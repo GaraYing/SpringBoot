@@ -1,5 +1,4 @@
-package com.gara.sb_errorhandle.result;
-
+package com.gara.sbmybatis.result;
 
 import com.alibaba.fastjson.JSON;
 

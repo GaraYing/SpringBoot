@@ -15,20 +15,6 @@
     <packaging>pom</packaging>
     <description>Demo project for Spring Boot</description>
 
-   <!-- <modules>
-        <module>../SpringBoot-Shiro</module>
-        <module>../SpringBoot-Validation</module>
-        <module>../SpringBoot-Demo1</module>
-        <module>../SpringBoot-Demo2</module>
-        <module>../SpringBoot-ErrorHandle</module>
-        <module>../SpringBoot-Jdbc</module>
-        <module>../SpringBoot-Log</module>
-        <module>../SpringBoot-Mail</module>
-        <module>../SpringBoot-MyStarter</module>
-        <module>../SpringBoot-Test</module>
-        <module>../SpringBoot-RabbitMQ</module>
-    </modules>-->
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -36,23 +22,25 @@
         <lombok.version>1.18.8</lombok.version>
         <fastjson.version>1.2.60</fastjson.version>
         <jedis.version>2.9.3</jedis.version>
+        <spring-boot.version>2.1.6.RELEASE</spring-boot.version>
     </properties>
     <dependencyManagement>
         <dependencies>
-            <dependency>
+            <!--<dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter</artifactId>
-            </dependency>
+            </dependency>-->
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
                 <!--<scope>provided</scope>-->
             </dependency>
+
             <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>fastjson</artifactId>
-                <version>${fastjson.version}</version>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-aop</artifactId>
+                <version>${spring-boot.version}</version>
             </dependency>
 
             <dependency>
@@ -66,11 +54,16 @@
                     </exclusion>
                 </exclusions>-->
             </dependency>
-            <!--<dependency>
+            <dependency>
                 <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>2.1.6.RELEASE</version>
-            </dependency>-->
+                <artifactId>spring-boot-starter-thymeleaf</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-security</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <dependencies>
@@ -89,8 +82,25 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>4.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.10</version>
         </dependency>
     </dependencies>
+
      <build>
          <plugins>
              <plugin>
@@ -99,6 +109,7 @@
              </plugin>
          </plugins>
      </build>
+
     <repositories>
         <repository>
             <id>maven2-release</id>
