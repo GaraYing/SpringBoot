@@ -12,6 +12,7 @@ import tk.mybatis.mapper.common.Mapper;
  * 
  * @param <T>
  */
+//@RegisterMapper
 public interface MyMapper<T,PK> extends
         Mapper<T>/*,MySqlMapper<T>*/
         , ConditionMapper<T>

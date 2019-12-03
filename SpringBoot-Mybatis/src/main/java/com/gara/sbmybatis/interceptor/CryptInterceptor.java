@@ -8,6 +8,7 @@ import org.apache.ibatis.plugin.*;
 import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.defaults.DefaultSqlSession;
+import org.springframework.util.Base64Utils;
 import org.springframework.util.StringUtils;
 
 import java.lang.annotation.Annotation;
@@ -283,7 +284,7 @@ public class CryptInterceptor implements Interceptor {
         if (StringUtils.isEmpty(str)) {
             return str;
         }
-        String[] data = new String[]{};
+        String[] data = new String[]{Base64Utils.encodeToString(str.getBytes())};
         if (isSingle == null) {
             //TODO 加密实现
             str = data[0];
@@ -313,13 +314,13 @@ public class CryptInterceptor implements Interceptor {
         if (StringUtils.isEmpty(str)) {
             return str;
         }
-        String[] array = str.split("\\|");
-        if (array.length < 2) {
-            return str;
-        }
+//        String[] array = str.split("\\|");
+//        if (array.length < 2) {
+//            return str;
+//        }
         //TODO 解密实现
-
-        return str;
+        byte[] bytes = Base64Utils.decodeFromString(str);
+        return new String(bytes);
     }
 
     /**

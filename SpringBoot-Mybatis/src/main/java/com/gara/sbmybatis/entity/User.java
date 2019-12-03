@@ -1,106 +1,42 @@
 package com.gara.sbmybatis.entity;
 
-import java.util.Date;
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.gara.sbmybatis.annotation.CryptField;
+import lombok.Data;
+import lombok.experimental.SuperBuilder;
+import lombok.experimental.Tolerate;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.sql.Timestamp;
+
+@SuperBuilder
+@Data
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
+    @Column(name = "username")
     private String username;
 
+    @CryptField
+    @Column(name = "password")
     private String password;
 
     @Column(name = "nick_name")
     private String nickName;
 
+    @Column(name = "sex")
     private Integer sex;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @Column(name = "register_date")
-    private Date registerDate;
+    private Timestamp registerDate;
 
-    /**
-     * @return id
-     */
-    public Integer getId() {
-        return id;
-    }
-
-    /**
-     * @param id
-     */
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    /**
-     * @return username
-     */
-    public String getUsername() {
-        return username;
-    }
-
-    /**
-     * @param username
-     */
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    /**
-     * @return password
-     */
-    public String getPassword() {
-        return password;
-    }
-
-    /**
-     * @param password
-     */
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    /**
-     * @return nick_name
-     */
-    public String getNickName() {
-        return nickName;
-    }
-
-    /**
-     * @param nickName
-     */
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
-    }
-
-    /**
-     * @return sex
-     */
-    public Integer getSex() {
-        return sex;
-    }
-
-    /**
-     * @param sex
-     */
-    public void setSex(Integer sex) {
-        this.sex = sex;
-    }
-
-    /**
-     * @return register_date
-     */
-    public Date getRegisterDate() {
-        return registerDate;
-    }
-
-    /**
-     * @param registerDate
-     */
-    public void setRegisterDate(Date registerDate) {
-        this.registerDate = registerDate;
+    @Tolerate
+    public User(){
     }
 }

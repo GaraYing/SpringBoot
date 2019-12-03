@@ -3,9 +3,6 @@ server:
 spring:
   datasource:
     name: test
-    url: jdbc:mysql://127.0.0.1:3306/test?useSSL=true
-    username: root
-    password: 123456
     type: com.alibaba.druid.pool.DruidDataSource
 #    driver-class-name:
     druid:
@@ -24,7 +21,15 @@ spring:
       maxOpenPreparedStatements: 20
       max-pool-prepared-statement-per-connection-size: 20
       validation-query-timeout: 10000
+      url: jdbc:mysql://127.0.0.1:3306/test?useSSL=true&useUnicode=true&characterEncoding=utf8
+      username: root
+      password: 123456
 #      加解密开关
 domain:
   encrypt: true
   decrypt: true
+logging:
+  level:
+    com:
+      gara:
+        mybatis: debug

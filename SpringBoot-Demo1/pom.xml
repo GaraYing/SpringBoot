@@ -29,7 +29,6 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.21</version>
 		</dependency>
 
 		<!-- Spring-data-jpa rely on Hibernate -->

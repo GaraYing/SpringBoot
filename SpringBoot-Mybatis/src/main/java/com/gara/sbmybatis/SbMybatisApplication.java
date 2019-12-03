@@ -1,4 +1,4 @@
-package com.gara;
+package com.gara.sbmybatis;
 
 
 import org.springframework.boot.SpringApplication;

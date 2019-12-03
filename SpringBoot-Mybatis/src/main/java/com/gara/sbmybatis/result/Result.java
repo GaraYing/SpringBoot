@@ -1,6 +1,7 @@
 package com.gara.sbmybatis.result;
 
 import com.alibaba.fastjson.JSON;
+import lombok.experimental.SuperBuilder;
 
 import java.io.Serializable;
 

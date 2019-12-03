@@ -17,4 +17,7 @@ public interface UserService extends Service<User, Long> {
      * @Author GaraYing
      **/
     Result<Long> saveUser(User user);
+
+
+    Result<User> queryUser(Long id);
 }
