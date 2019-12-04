@@ -12,7 +12,6 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * @description: 测试自动配置
- * @author: yingz@fadada.com
  * @createTime: 2019-06-24 14:12
  * @Version: 1.0
  **/

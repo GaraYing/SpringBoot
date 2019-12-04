@@ -8,7 +8,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
  * @description: 测试属性类
- * @author: yingz@fadada.com
  * @createTime: 2019-06-24 14:08
  * @Version: 1.0
  **/

@@ -9,8 +9,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @description:
- * @Copyright: 深圳法大大网络科技有限公司 (c)2019
- * @author: yingz@fadada.com
  * @createTime: 2019-07-11 19:52
  * @Version: 4.0
  **/

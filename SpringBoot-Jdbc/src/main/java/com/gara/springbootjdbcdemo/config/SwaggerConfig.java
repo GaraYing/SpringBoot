@@ -79,7 +79,7 @@ public class SwaggerConfig {
         return new ApiInfoBuilder()
                 .title("TestAPI From Swagger")
                 .description("这是Swagger描述")
-                .termsOfServiceUrl("http://www.fadada.com/")
+                .termsOfServiceUrl("http://www.xxx.com/")
                 .contact("Gara")
                 .version("1.0")
                 .build();

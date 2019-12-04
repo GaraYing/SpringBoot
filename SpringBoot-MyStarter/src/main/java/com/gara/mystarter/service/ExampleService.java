@@ -7,7 +7,6 @@ import lombok.Setter;
 
 /**
  * @description: 测试服务
- * @author: yingz@fadada.com
  * @createTime: 2019-06-24 14:15
  * @Version: 1.0
  **/
