@@ -1,7 +1,7 @@
 package com.gara.sbmybatis.controller;
 
+import com.gara.sbcommon.result.Result;
 import com.gara.sbmybatis.entity.User;
-import com.gara.sbmybatis.result.Result;
 import com.gara.sbmybatis.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

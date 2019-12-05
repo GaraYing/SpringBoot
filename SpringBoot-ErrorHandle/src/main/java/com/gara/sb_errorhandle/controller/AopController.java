@@ -1,8 +1,8 @@
 package com.gara.sb_errorhandle.controller;
 
-import com.gara.sb_errorhandle.result.Result;
-import com.gara.sb_errorhandle.result.ResultCode;
-import com.gara.sb_errorhandle.result.ResultGenerator;
+import com.gara.sbcommon.result.Result;
+import com.gara.sbcommon.result.ResultCode;
+import com.gara.sbcommon.result.ResultGenerator;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Aspect;

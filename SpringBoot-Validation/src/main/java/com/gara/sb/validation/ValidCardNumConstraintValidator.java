@@ -2,6 +2,7 @@ package com.gara.sb.validation;
 
 import com.gara.sb.validation.constraints.ValidCardNum;
 import org.apache.commons.lang3.ArrayUtils;
+import org.springframework.util.StringUtils;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

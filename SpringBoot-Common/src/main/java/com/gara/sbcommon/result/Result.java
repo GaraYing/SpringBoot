@@ -1,4 +1,4 @@
-package com.gara.sb_errorhandle.result;
+package com.gara.sbcommon.result;
 
 
 import com.alibaba.fastjson.JSON;

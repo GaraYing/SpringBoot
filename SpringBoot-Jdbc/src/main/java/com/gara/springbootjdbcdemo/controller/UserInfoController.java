@@ -15,7 +15,6 @@ import reactor.core.publisher.Mono;
 @RestController
 @RequestMapping("users")
 public class UserInfoController {
-
     @GetMapping("user")
     public Mono<User> getUser(@PathVariable Long user) {
         return null;

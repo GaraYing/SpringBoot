@@ -1,8 +1,8 @@
 package com.gara.sbmybatis.service;
 
+import com.gara.sbcommon.result.Result;
 import com.gara.sbmybatis.core.Service;
 import com.gara.sbmybatis.entity.User;
-import com.gara.sbmybatis.result.Result;
 
 /**
  * 用户信息接口

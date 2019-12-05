@@ -1,4 +1,4 @@
-package com.gara.sbmybatis.result;
+package com.gara.sbcommon.result;
 
 import java.io.Serializable;
 

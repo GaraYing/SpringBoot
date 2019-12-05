@@ -1,7 +1,7 @@
 package com.gara.sb_errorhandle.controller;
 
-import com.gara.sb_errorhandle.result.Result;
-import com.gara.sb_errorhandle.result.ResultGenerator;
+import com.gara.sbcommon.result.Result;
+import com.gara.sbcommon.result.ResultGenerator;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
