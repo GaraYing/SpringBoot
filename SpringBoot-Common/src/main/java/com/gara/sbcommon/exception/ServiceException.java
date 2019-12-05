@@ -1,6 +1,6 @@
-package com.gara.sbmybatis.exception;
+package com.gara.sbcommon.exception;
 
-import com.gara.sbmybatis.result.ResultCode;
+import com.gara.sbcommon.result.ResultCode;
 
 /**
  * 业务逻辑异常 异常如“ 账号或密码错误 ”，该异常只做INFO级别的日志记录 @see WebMvcConfigurer

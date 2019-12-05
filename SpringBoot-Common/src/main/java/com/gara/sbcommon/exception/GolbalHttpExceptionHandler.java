@@ -1,7 +1,7 @@
-package com.gara.sbmybatis.exception;
+package com.gara.sbcommon.exception;
 
 import com.alibaba.fastjson.JSON;
-import com.gara.sbmybatis.result.ResultCode;
+import com.gara.sbcommon.result.ResultCode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.event.Level;

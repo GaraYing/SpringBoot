@@ -1,6 +1,6 @@
-package com.gara.sbmybatis.exception;
+package com.gara.sbcommon.exception;
 
-import com.gara.sbmybatis.result.ResultCode;
+import com.gara.sbcommon.result.ResultCode;
 
 /**
  * 应用异常

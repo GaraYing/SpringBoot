@@ -1,6 +1,6 @@
 package com.gara.sbmybatis.core;
 
-import com.gara.sbmybatis.exception.ServiceException;
+import com.gara.sbcommon.exception.ServiceException;
 import org.apache.ibatis.exceptions.TooManyResultsException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
