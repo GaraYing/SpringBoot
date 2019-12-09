@@ -5,8 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * @description:
@@ -24,16 +23,36 @@ public class CustomerController {
     }
 
     @GetMapping("testSuperBuilder")
-    public String testSuperBuilder(){
+    public String testSuperBuilder() {
         customerService.testSuperBuilder();
         return "success";
     }
 
     public static void main(String[] args) {
+        long currentTimeMillis = System.currentTimeMillis();
+        String s = CompletableFuture.supplyAsync(CustomerController::hello)
+                .thenCombine(
+                        CompletableFuture.supplyAsync(
+                                CustomerController::world), (s1, s2) -> s1 + " " + s2).join();
+        System.out.println(s);
+        System.out.println(System.currentTimeMillis() - currentTimeMillis + "ms");
+    }
 
-//        List<String> list = Arrays.asList("12", "23", "34");
-        List<String> list1 = new ArrayList<>();
-//        list.forEach(System.out::println);
-        list1.forEach(System.out::println);
+    private static String hello(){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return "hello";
+    }
+
+    private static String world(){
+        try {
+            Thread.sleep(1500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return "world";
     }
 }
