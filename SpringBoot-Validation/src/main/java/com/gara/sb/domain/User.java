@@ -1,7 +1,9 @@
 package com.gara.sb.domain;
 
 import com.gara.sb.validation.constraints.ValidCardNum;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 import javax.validation.constraints.Max;
@@ -9,6 +11,8 @@ import javax.validation.constraints.NotNull;
 
 @SuperBuilder
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
 
     @Max(value = 10000)

@@ -13,8 +13,8 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.HttpMediaTypeException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.client.HttpStatusCodeException;
 
 import javax.servlet.ServletException;
@@ -31,13 +31,12 @@ import static org.slf4j.event.Level.WARN;
 
 /**
 * @Description:    全局异常处理
-* @Author:         hubo
 * @CreateDate:     2019-04-13 14:18
  * @Version:        1.0
 */
-@ControllerAdvice
-public class GolbalHttpExceptionHandler {
-    private static final Logger logger = LoggerFactory.getLogger(GolbalHttpExceptionHandler.class);
+@RestControllerAdvice
+public class GlobalHttpExceptionHandler {
+    private static final Logger logger = LoggerFactory.getLogger(GlobalHttpExceptionHandler.class);
 
     //处理系统内置的Exception
     @ExceptionHandler(Throwable.class)

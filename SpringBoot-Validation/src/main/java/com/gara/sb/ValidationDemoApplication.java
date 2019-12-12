@@ -14,7 +14,7 @@ public class ValidationDemoApplication implements WebMvcConfigurer {
 	}
 
 	@Override
-	public void addInterceptors(InterceptorRegistry registry) {
+	public void  addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(new UserControllerInterceptor());
 	}
 }

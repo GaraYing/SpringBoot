@@ -1,9 +1,11 @@
 package com.gara.sb.domain;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import com.gara.sb.validation.CustomerGroup;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
+
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 /**
  * @description:
@@ -13,11 +15,14 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @ToString(callSuper = true)
 public class Customer extends User {
 
     private Long customerId;
 
+    @NotNull(message = "resource不能为空", groups = CustomerGroup.class)
+    @NotEmpty(message = "resource不能为空", groups = CustomerGroup.class)
     private String resource;
-
 }
