@@ -68,11 +68,6 @@
             <version>2.3.23</version>
             <scope>test</scope>
         </dependency>
-       <!-- <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis</artifactId>
-            <version>3.5.2</version>
-        </dependency>-->
 
     </dependencies>
 
