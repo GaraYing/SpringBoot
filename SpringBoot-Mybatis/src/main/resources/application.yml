@@ -33,3 +33,5 @@ logging:
     com:
       gara:
         mybatis: debug
+swagger:
+  enable: true

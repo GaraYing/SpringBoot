@@ -1,5 +1,10 @@
-package com.gara.springbootjdbcdemo.config;
+package com.gara.sbcommon.config;
 
+import com.google.common.collect.Lists;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -16,8 +21,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.List;
 
-import static com.google.common.collect.Lists.newArrayList;
-
 /**
  * @ClassName: SwaggerConfig
  * @description: swagger api config
@@ -28,14 +31,17 @@ import static com.google.common.collect.Lists.newArrayList;
 
 @Configuration
 @EnableSwagger2
+@ConfigurationProperties(prefix = "swagger")
+//@ConditionalOnMissingBean
+@ConditionalOnProperty(prefix = "swagger", value = "enable", havingValue = "true")
 public class SwaggerConfig {
 
     @Bean
-    public Docket createRestApi(){
+    public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiinfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.gara.springbootjdbcdemo"))
+                .apis(RequestHandlerSelectors.basePackage("com.gara"))
                 .paths(PathSelectors.any())
                 .build()
                 .securitySchemes(securitySchemes())
@@ -45,10 +51,11 @@ public class SwaggerConfig {
 
     /**
      * 配置认证上下文
+     *
      * @return
      */
     private List<SecurityContext> securityContexts() {
-        return newArrayList(SecurityContext.builder()
+        return Lists.newArrayList(SecurityContext.builder()
                 .securityReferences(defaultAuth())
                 .forPaths(PathSelectors.any())
                 .build());
@@ -59,15 +66,16 @@ public class SwaggerConfig {
         AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverything");
         AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
         authorizationScopes[0] = authorizationScope;
-        return newArrayList(new SecurityReference("Authorization", authorizationScopes));
+        return Lists.newArrayList(new SecurityReference("Authorization", authorizationScopes));
     }
 
     /**
      * 配置认证模式
+     *
      * @return
      */
     private List<ApiKey> securitySchemes() {
-        return newArrayList(new ApiKey("Authorization","Authorization","header"));
+        return Lists.newArrayList(new ApiKey("Authorization", "Authorization", "header"));
     }
 
     /**

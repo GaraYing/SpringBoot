@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
  * @Version: 1.0
 **/
 
-@EnableAutoConfiguration
-@Component
-@ComponentScan(basePackageClasses = CommonConfig.class)
+//@EnableAutoConfiguration
+//@Component
+//@ComponentScan(basePackageClasses = CommonConfig.class)
 public class CommonConfig {
 }
