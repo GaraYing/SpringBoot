@@ -8,8 +8,8 @@
     <description>sb-common project for SpringBoot</description>
 
     <parent>
-        <artifactId>parent</artifactId>
         <groupId>com.gara.demo</groupId>
+        <artifactId>parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath/>
     </parent>
