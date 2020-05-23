@@ -15,20 +15,20 @@ import org.springframework.context.annotation.Import;
 @Import(CommonConfig.class)
 public class TestConfig {
 
-    @Value("${fdd.oss:ali}")
-    private String fddOss;
+    @Value("${test.oss:ali}")
+    private String testOss;
 
     public static String SS;
 
-    public String getFddOss() {
-        return fddOss;
+    public String getTestOss() {
+        return testOss;
     }
 
-    public void setFddOss(String fddOss) {
-        this.fddOss = fddOss;
+    public void setTestOss(String testOss) {
+        this.testOss = testOss;
     }
 
-    @Value("${fdd.sv:test}")
+    @Value("${test.sv:test}")
     public void setSS(String SS) {
         TestConfig.SS = SS;
     }

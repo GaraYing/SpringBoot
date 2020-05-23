@@ -9,7 +9,7 @@ spring:
       enabled: true
       additional-paths: src/main/java
       exclude: WEB-INF/**
-fdd:
+test:
   oss: ali
   sv: bjh*&*&**************sssssssss
 

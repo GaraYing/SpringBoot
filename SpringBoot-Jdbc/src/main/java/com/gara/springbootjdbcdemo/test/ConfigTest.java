@@ -18,7 +18,7 @@ public class ConfigTest implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        System.out.println(config.getFddOss()+"1");
+        System.out.println(config.getTestOss()+"1");
 
         System.out.println(TestConfig.SS + "2");
     }
