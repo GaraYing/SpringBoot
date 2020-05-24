@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 
@@ -25,4 +26,16 @@ public class User {
 //    @ValidCardNum(message = "卡号必须以\"GARA\"开头 , 以数字结尾")
     @ValidCardNum
     private String cardNum;
+    /**
+     * 嵌套校验属性必须用  {@link Valid} 修饰
+      */
+    @Valid
+    private Profile profile;
+
+    @Data
+    static class Profile{
+
+        @NotNull(message = "头像不能为空")
+        private String photo;
+    }
 }
