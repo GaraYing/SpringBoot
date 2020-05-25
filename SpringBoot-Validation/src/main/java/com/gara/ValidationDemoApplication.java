@@ -1,4 +1,4 @@
-package com.gara.sb;
+package com.gara;
 
 import com.gara.sb.controller.UserControllerInterceptor;
 import org.springframework.boot.SpringApplication;

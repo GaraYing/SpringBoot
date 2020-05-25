@@ -1,8 +1,7 @@
 package com.gara.sb.config;
 
-import com.gara.sbcommon.CommonConfig;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 
 /**
  * @description: 核心配置类
@@ -11,7 +10,11 @@ import org.springframework.context.annotation.Import;
  * @Version: 1.0
 **/
 @Configuration
-@Import(value = CommonConfig.class)
+//@Import(value = CommonConfig.class)
 public class CoreConfig {
 
+    @Bean
+    public String helloWorld(){ // 方法名即Bean名
+        return "Hello World 2020";
+    }
 }

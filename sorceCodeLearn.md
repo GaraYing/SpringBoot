@@ -22,3 +22,8 @@
 
 ## jConsole for Java Application
 application PID for JMS
+
+## selfDefine Annotation 自定义注解
+### 派生性
+`Repository` `FirstLevelRepository` `SecondLevelRepository`
+### 层次性
