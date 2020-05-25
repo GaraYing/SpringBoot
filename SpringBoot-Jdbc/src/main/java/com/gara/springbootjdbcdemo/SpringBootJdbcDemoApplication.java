@@ -1,13 +1,10 @@
 package com.gara.springbootjdbcdemo;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.context.annotation.ComponentScan;
 
-@SpringBootApplication
-@ComponentScan(basePackages = "com.gara")
+@SpringBootApplication(scanBasePackages = "com.gara")
+//@ComponentScan(basePackages = "com.gara")
 public class SpringBootJdbcDemoApplication {
 
     public static void main(String[] args) {

@@ -27,3 +27,11 @@ application PID for JMS
 ### 派生性
 `Repository` `FirstLevelRepository` `SecondLevelRepository`
 ### 层次性
+
+## 自定义条件装配
+### 注解实现
+1. `@Profile` 示例见`ProfileBootStrap`
+2. `org.springframework.context.annotation@Conditional` 
+`org.springframework.context.annotation@Condition`
+### 编程实现
+类似`ConditionalOnProperty`

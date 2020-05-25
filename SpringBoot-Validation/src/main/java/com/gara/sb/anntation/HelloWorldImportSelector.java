@@ -13,6 +13,7 @@ import org.springframework.core.type.AnnotationMetadata;
 public class HelloWorldImportSelector implements ImportSelector {
     @Override
     public String[] selectImports(AnnotationMetadata importingClassMetadata) {
+        // 这里可以加上分支判断和其他逻辑处理
         return new String[]{CoreConfig.class.getName()};
     }
 }
