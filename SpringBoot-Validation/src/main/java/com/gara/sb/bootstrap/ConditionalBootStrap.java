@@ -8,7 +8,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 
 /**
- * @description: ProfileBootStrap引导类 {@link org.springframework.context.annotation.Profile}
+ * @description: ConditionalBootStrap引导类 {@link org.springframework.context.annotation.Conditional}
  * @author: GaraYing
  * @createTime: 2020/5/25 16:42
  * @Version: 1.0

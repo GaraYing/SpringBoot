@@ -13,7 +13,7 @@ import java.util.concurrent.atomic.AtomicLong;
  * @Version: 4.0
  **/
 @Service
-public class customerServiceImpl implements CustomerService{
+public class CustomerServiceImpl implements CustomerService{
 
     private Map<Long, Customer> repository = new ConcurrentHashMap<>();
 

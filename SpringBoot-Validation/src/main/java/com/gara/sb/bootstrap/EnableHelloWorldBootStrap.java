@@ -1,14 +1,16 @@
 package com.gara.sb.bootstrap;
 
 import com.gara.sb.anntation.EnableHelloWorld;
-import com.gara.sb.config.CoreConfig;
-import com.gara.sb.repository.UserRepository;
 import org.springframework.boot.WebApplicationType;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
 
+/**
+ * @description: ConditionalBootStrap引导类 {@link EnableHelloWorld}
+ * @author:  GaraYing
+ * @createTime: 2020/5/26 9:31
+ * @Version: 1.0
+**/
 @EnableHelloWorld
 public class EnableHelloWorldBootStrap {
 
