@@ -35,7 +35,7 @@ public class SpringBootTomcatApplication {
 	public static void main(String[] args) {
 
 		new SpringApplicationBuilder(SpringBootTomcatApplication.class)
-				.bannerMode(Banner.Mode.CONSOLE)
+				.bannerMode(Banner.Mode.OFF)
 				.web(WebApplicationType.SERVLET)
 				.build()
 				.run(args);

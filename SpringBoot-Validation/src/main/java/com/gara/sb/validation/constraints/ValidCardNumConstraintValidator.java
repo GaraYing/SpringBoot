@@ -1,4 +1,4 @@
-package com.gara.sb.validation;
+package com.gara.sb.validation.constraints;
 
 import com.gara.sb.validation.constraints.ValidCardNum;
 import org.apache.commons.lang3.ArrayUtils;

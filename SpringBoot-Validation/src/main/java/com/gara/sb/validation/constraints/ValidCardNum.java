@@ -1,7 +1,5 @@
 package com.gara.sb.validation.constraints;
 
-import com.gara.sb.validation.ValidCardNumConstraintValidator;
-
 import javax.validation.Constraint;
 import javax.validation.Payload;
 import java.lang.annotation.*;
