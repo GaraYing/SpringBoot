@@ -1,8 +1,7 @@
 package com.gara.sbmybatis.config;
 
 import com.gara.sbcommon.CommonConfig;
-import com.gara.sbmybatis.interceptor.CryptInterceptor;
-import org.springframework.context.annotation.Bean;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
@@ -11,5 +10,9 @@ import org.springframework.context.annotation.Import;
  */
 @Configuration
 @Import(value = CommonConfig.class)
-public class CoreConfig {
+public class CoreConfig implements CommandLineRunner {
+    @Override
+    public void run(String... args) throws Exception {
+        System.out.println("coreConfig init *********");
+    }
 }

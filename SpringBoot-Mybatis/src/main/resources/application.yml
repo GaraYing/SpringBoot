@@ -35,3 +35,9 @@ logging:
         mybatis: debug
 swagger:
   enable: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

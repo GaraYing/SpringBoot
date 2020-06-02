@@ -1,8 +1,10 @@
 package com.gara.sb.config;
 
 import com.gara.sb.validation.SamplePropertiesValidator;
+import com.gara.sbcommon.CommonConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.validation.Validator;
 
 /**
