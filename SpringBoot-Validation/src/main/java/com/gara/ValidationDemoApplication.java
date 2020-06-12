@@ -45,16 +45,20 @@ public class ValidationDemoApplication implements WebMvcConfigurer, CommandLineR
 		System.out.println("=========================================");
 	}
 
+	/**
+	 * 1. 推断应用类型 {@link SpringApplication#deduceEnvironmentClass}
+	 * 2. 推断应用配置类 {@link SpringApplication#deduceMainApplicationClass}
+	 * @param args
+	 */
 	public static void main(String[] args) {
 //		SpringApplication.run(ValidationDemoApplication.class, args);
 
 		Set<String> sources = new HashSet<>();
 		sources.add(ApplicationConfiguration.class.getName());
 
-		SpringApplication.run(ApplicationConfiguration.class, args);
 		SpringApplication springApplication = new SpringApplication();
 		springApplication.setSources(sources);
-		springApplication.setWebApplicationType(WebApplicationType.NONE);
+		springApplication.setWebApplicationType(WebApplicationType.SERVLET);
 
 		ConfigurableApplicationContext context = springApplication.run();
 		System.out.println("ValidationDemoApplication.main: " + context.getBean(ApplicationConfiguration.class));

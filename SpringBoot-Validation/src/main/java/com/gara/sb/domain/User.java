@@ -1,6 +1,8 @@
 package com.gara.sb.domain;
 
+import com.gara.sb.validation.constraints.StatusEnum;
 import com.gara.sb.validation.constraints.ValidCardNum;
+import com.gara.sb.validation.constraints.ValueOfEnum;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,6 +25,9 @@ public class User {
 
     @NotNull(message = "姓名不能为空")
     private String name;
+
+    @ValueOfEnum(enumClass = StatusEnum.class, enumMethod = "isValidValue", message = "参数校验不得行")
+    private Integer type;
 
     @NotNull
 //    @ValidCardNum(message = "卡号必须以\"GARA\"开头 , 以数字结尾")
