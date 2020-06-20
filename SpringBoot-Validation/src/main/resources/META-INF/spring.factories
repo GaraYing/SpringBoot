@@ -1,2 +1,12 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 com.gara.sb.config.HelloWorldAutoConfiguration
+
+# Run Listeners
+org.springframework.boot.SpringApplicationRunListener=\
+com.gara.sb.run.HelloWorldRunListener
+
+
+# Application Listeners
+org.springframework.context.ApplicationListener=\
+com.gara.sb.listener.BeforeConfigFileApplicationListener,\
+com.gara.sb.listener.AfterConfigFileApplicationListener
