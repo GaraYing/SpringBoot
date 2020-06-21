@@ -40,9 +40,6 @@
 		<!-- 使用Redis 数据库 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<!--<artifactId>spring-boot-starter-redis</artifactId>
-			<version>1.3.8.RELEASE</version>-->
-
 			<!-- 1.4以后改名叫spring-boot-starter-data-redis -->
 			<artifactId>spring-boot-starter-data-redis</artifactId>
 		</dependency>
