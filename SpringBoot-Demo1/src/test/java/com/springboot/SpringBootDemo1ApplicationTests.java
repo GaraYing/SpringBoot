@@ -1,10 +1,8 @@
 package com.springboot;
 
-import com.springboot.service.UserRepository;
 import com.springboot.service.UserService;
 import com.springboot.service.WorkerRepository;
 import com.springboot.vo.User2;
-import com.springboot.vo.User3;
 import com.springboot.vo.Worker;
 import org.junit.Assert;
 import org.junit.Before;
@@ -129,27 +127,27 @@ public class SpringBootDemo1ApplicationTests {
 
 	}
 
-	@Autowired
-	private UserRepository userRepository;
+//	@Autowired
+//	private UserRepository userRepository;
 
-	@Test
-	public void testMongoDB(){
-
-			// 创建三个User，并验证User总数
-			userRepository.save(new User3(1L, "didi", 30));
-			userRepository.save(new User3(2L, "mama", 40));
-			userRepository.save(new User3(3L, "kaka", 50));
-			Assert.assertEquals(3, userRepository.findAll().size());
-
-			// 删除一个User，再验证User总数
-			User3 u = userRepository.findById(1L).get();
-			userRepository.delete(u);
-			Assert.assertEquals(2, userRepository.findAll().size());
-
-			// 删除一个User，再验证User总数
-			u = userRepository.findByUserName("mama");
-			userRepository.delete(u);
-			Assert.assertEquals(1, userRepository.findAll().size());
-	}
+//	@Test
+//	public void testMongoDB(){
+//
+//			// 创建三个User，并验证User总数
+//			userRepository.save(new User3(1L, "didi", 30));
+//			userRepository.save(new User3(2L, "mama", 40));
+//			userRepository.save(new User3(3L, "kaka", 50));
+//			Assert.assertEquals(3, userRepository.findAll().size());
+//
+//			// 删除一个User，再验证User总数
+//			User3 u = userRepository.findById(1L).get();
+//			userRepository.delete(u);
+//			Assert.assertEquals(2, userRepository.findAll().size());
+//
+//			// 删除一个User，再验证User总数
+//			u = userRepository.findByUserName("mama");
+//			userRepository.delete(u);
+//			Assert.assertEquals(1, userRepository.findAll().size());
+//	}
 
 }

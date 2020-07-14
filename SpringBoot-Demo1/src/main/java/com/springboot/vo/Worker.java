@@ -1,5 +1,7 @@
 package com.springboot.vo;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +12,7 @@ public class Worker {
 
     @Id
     @GeneratedValue
+    @GenericGenerator(name = "", strategy = "")
     private Integer workerId;
 
     @Column(nullable = false)
