@@ -3,7 +3,7 @@
 <mapper namespace="com.gara.jpademo.repository.UserRoleDao">
   <resultMap id="BaseResultMap" type="com.gara.jpademo.model.UserRole">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="username" jdbcType="VARCHAR" property="userName" />
     <result column="userroles" jdbcType="VARCHAR" property="userroles" />
     <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
     <result column="updatetime" jdbcType="TIMESTAMP" property="updatetime" />
@@ -24,13 +24,13 @@
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.gara.jpademo.model.UserRole" useGeneratedKeys="true">
     insert into user_role (username, userroles, createtime, 
       updatetime)
-    values (#{username,jdbcType=VARCHAR}, #{userroles,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
+    values (#{userName,jdbcType=VARCHAR}, #{userroles,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP},
       #{updatetime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.gara.jpademo.model.UserRole" useGeneratedKeys="true">
     insert into user_role
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="username != null">
+      <if test="userName != null">
         username,
       </if>
       <if test="userroles != null">
@@ -44,8 +44,8 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="username != null">
-        #{username,jdbcType=VARCHAR},
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
       </if>
       <if test="userroles != null">
         #{userroles,jdbcType=VARCHAR},
@@ -78,7 +78,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.gara.jpademo.model.UserRole">
     update user_role
-    set username = #{username,jdbcType=VARCHAR},
+    set username = #{userName,jdbcType=VARCHAR},
       userroles = #{userroles,jdbcType=VARCHAR},
       createtime = #{createtime,jdbcType=TIMESTAMP},
       updatetime = #{updatetime,jdbcType=TIMESTAMP}

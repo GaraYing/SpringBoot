@@ -2,10 +2,12 @@ package com.gara.jpademo.model;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.experimental.Tolerate;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * user_role
@@ -17,6 +19,7 @@ import java.util.Date;
 @Entity
 @Builder
 public class UserRole implements Serializable {
+    @Tolerate
     public UserRole() {
     }
 
@@ -25,7 +28,7 @@ public class UserRole implements Serializable {
     private Integer id;
 
     @Column(name = "username", nullable = false)
-    private String username;
+    private String userName;
 
     @Column(name = "userroles", nullable = false)
     private String userroles;
@@ -35,6 +38,9 @@ public class UserRole implements Serializable {
 
     @Column(name = "updatetime", nullable = false)
     private Date updatetime;
+
+    @ManyToOne(targetEntity = UserInfo.class)
+    private UserInfo userInfo;
 
     private static final long serialVersionUID = 1L;
 }

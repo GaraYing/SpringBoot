@@ -1,16 +1,15 @@
 package com.gara.jpademo;
 
 import com.gara.jpademo.model.UserInfo;
-import com.gara.jpademo.repository.UserInfoDao;
-import com.gara.jpademo.repository.UserInfoRepository;
+import com.gara.jpademo.model.UserRole;
+import com.gara.jpademo.repository.*;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
@@ -29,7 +28,13 @@ public class JpaDemoApplicationTests {
     @Autowired
     private UserInfoDao userInfoDao;
     @Autowired
+    private UserRoleDao userRoleDao;
+    @Autowired
     private UserInfoRepository userInfoRepository;
+    @Autowired
+    private UserInfoExampleRepository userInfoExampleRepository;
+    @Autowired
+    private UserRoleExampleRepository userRoleExampleRepository;
 
     @Test
     public void testConn(){
@@ -45,6 +50,12 @@ public class JpaDemoApplicationTests {
         UserInfo userInfoBack = userInfoDao.selectByPrimaryKey(userInfo.getId());
 
         System.out.println(userInfoBack.toString());
+
+        UserRole userRole = UserRole.builder().userName("test1").userroles("admin;customer").build();
+        userRoleDao.insert(userRole);
+
+        UserRole userRole1 = userRoleDao.selectByPrimaryKey(userRole.getId());
+        System.out.println(userRole1);
     }
 
     @Test
@@ -57,6 +68,26 @@ public class JpaDemoApplicationTests {
 
     @Test
     public void testUnion(){
+
+    }
+
+    @Test
+    public void testQueryByExample(){
+//        UserInfo userInfo = UserInfo.builder().userName("test1").build();
+//
+//        Example<UserInfo> example = Example.of(userInfo);
+//
+//        int integer = userInfoExampleRepository.findOne(example).map(UserInfo::getId).orElse(0);
+//
+//
+//        Assert.assertEquals(1, integer);
+
+        UserRole userRole = UserRole.builder().userName("test1").build();
+
+        Example<UserRole> example = Example.of(userRole);
+
+        userRoleExampleRepository.findOne(example);
+
     }
 
 }

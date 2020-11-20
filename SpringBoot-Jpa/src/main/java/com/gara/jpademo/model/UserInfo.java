@@ -2,9 +2,11 @@ package com.gara.jpademo.model;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.experimental.Tolerate;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * user_info
@@ -16,6 +18,7 @@ import java.io.Serializable;
 @Entity
 public class UserInfo implements Serializable {
 
+    @Tolerate
     public UserInfo() {
     }
 
@@ -44,8 +47,9 @@ public class UserInfo implements Serializable {
     /**
      * 是否可用
      */
+    @Builder.Default
     @Column(name = "enabled", nullable = false)
-    private Integer enabled;
+    private Integer enabled = 1;
 
     /**
      * 真实姓名
@@ -65,13 +69,13 @@ public class UserInfo implements Serializable {
     /**
      * 联系电话
      */
-    @Column(name = "tel", nullable = false)
+    @Column(name = "tel")
     private String tel;
 
     private static final long serialVersionUID = 1L;
 
-//    @ManyToOne(targetEntity = UserInfo.class)
-//    private List<UserInfo> userInfos;
+    @OneToMany(targetEntity = UserRole.class)
+    private List<UserRole> userRoles;
 
 
     @Override
