@@ -16,7 +16,7 @@ public class RedisIdController {
     public static ExecutorService executorService = null;
 
     public RedisIdController() {
-        executorService = Executors.newFixedThreadPool(50);
+        executorService = Executors.newFixedThreadPool(1);
     }
 
     @Resource

@@ -67,6 +67,9 @@ public class SpringBootDemo1ApplicationTests {
     @Test
     public void test2() throws Exception {
 
+//		workerRepository.deleteAll();
+		workerRepository.deleteAllInBatch();
+
         // 创建10条记录
         workerRepository.save(new Worker("AAA", 10));
         workerRepository.save(new Worker("BBB", 20));

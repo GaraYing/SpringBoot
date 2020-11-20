@@ -1,11 +1,11 @@
 package com.springboot.service;
 
 import com.springboot.vo.IdTest;
-import com.springboot.vo.Worker;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
+import org.springframework.data.repository.CrudRepository;
 
-public interface IdTestRepository extends JpaRepository<IdTest,Long> {
+/**
+ * {@link org.springframework.data.jpa.repository.JpaRepository}
+ */
+public interface IdTestRepository extends CrudRepository<IdTest,Long> {
 
 }
