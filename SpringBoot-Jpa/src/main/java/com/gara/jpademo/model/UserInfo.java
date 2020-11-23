@@ -1,5 +1,7 @@
 package com.gara.jpademo.model;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.Tolerate;
@@ -74,7 +76,10 @@ public class UserInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @OneToMany(targetEntity = UserRole.class)
+    // 这里设置 FetchType = lazy,获取时才会发起SQL查询
+    @JsonIgnore
+    @JSONField(serialize = false)
+    @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "userInfo", fetch = FetchType.LAZY)
     private List<UserRole> userRoles;
 
 
@@ -82,7 +87,7 @@ public class UserInfo implements Serializable {
     public String toString() {
         return "UserInfo{" +
                 "id=" + id +
-                ", username='" + userName + '\'' +
+                ", userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
                 ", usertype='" + usertype + '\'' +
                 ", enabled=" + enabled +
@@ -90,6 +95,7 @@ public class UserInfo implements Serializable {
                 ", qq='" + qq + '\'' +
                 ", email='" + email + '\'' +
                 ", tel='" + tel + '\'' +
+                ", userRoles=" + userRoles +
                 '}';
     }
 }

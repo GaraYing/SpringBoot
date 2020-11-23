@@ -3,16 +3,23 @@ package com.gara.jpademo;
 import com.gara.jpademo.model.UserInfo;
 import com.gara.jpademo.model.UserRole;
 import com.gara.jpademo.repository.*;
+import org.assertj.core.util.Lists;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.*;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.concurrent.ThreadFactory;
 
 @RunWith(SpringRunner.class)
 @MapperScan(basePackages = "com.gara.jpademo")
@@ -40,19 +47,21 @@ public class JpaDemoApplicationTests {
     public void testConn(){
         UserInfo info = UserInfo.builder().userName("test7")
                 .email("test7@qq.com")
-                .password("xxxxx")
-                .qq("122121212")
+                .password("yyyy")
+                .qq("122121222212")
                 .realname("zhangsna")
-                .usertype("qq")
+                .usertype("AA")
                 .build();
         UserInfo userInfo = userInfoRepository.save(info);
 
         UserInfo userInfoBack = userInfoDao.selectByPrimaryKey(userInfo.getId());
 
-        System.out.println(userInfoBack.toString());
+        System.out.println("+++++++++++++userInfoBack: " + userInfoBack.toString());
 
-        UserRole userRole = UserRole.builder().userName("test1").userroles("admin;customer").build();
+        UserRole userRole = UserRole.builder().userInfo(userInfo).userroles("admin;customer").build();
         userRoleDao.insert(userRole);
+
+        userInfoRepository.findById(userInfo.getId()).ifPresent(System.out::print);
 
         UserRole userRole1 = userRoleDao.selectByPrimaryKey(userRole.getId());
         System.out.println(userRole1);
@@ -67,27 +76,23 @@ public class JpaDemoApplicationTests {
     }
 
     @Test
-    public void testUnion(){
+    public void testUnion() throws InterruptedException {
+        List<UserInfo> test8 = userInfoRepository.findByUserName("test8");
 
+        test8.forEach(e ->{
+            System.out.println(e.getId());
+            System.out.println(e.getUserRoles());
+        });
+
+        Thread.sleep(5000);
     }
 
     @Test
     public void testQueryByExample(){
-//        UserInfo userInfo = UserInfo.builder().userName("test1").build();
-//
-//        Example<UserInfo> example = Example.of(userInfo);
-//
-//        int integer = userInfoExampleRepository.findOne(example).map(UserInfo::getId).orElse(0);
-//
-//
-//        Assert.assertEquals(1, integer);
-
-        UserRole userRole = UserRole.builder().userName("test1").build();
-
+        UserRole userRole = UserRole.builder().id(2).build();
         Example<UserRole> example = Example.of(userRole);
-
-        userRoleExampleRepository.findOne(example);
-
+        Optional<UserRole> optional = userRoleExampleRepository.findOne(example);
+        Assert.assertTrue(optional.isPresent());
     }
 
 }

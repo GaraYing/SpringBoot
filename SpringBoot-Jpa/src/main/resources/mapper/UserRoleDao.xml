@@ -3,13 +3,13 @@
 <mapper namespace="com.gara.jpademo.repository.UserRoleDao">
   <resultMap id="BaseResultMap" type="com.gara.jpademo.model.UserRole">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="username" jdbcType="VARCHAR" property="userName" />
+    <result column="user_info_id" jdbcType="VARCHAR" property="userInfo.id" />
     <result column="userroles" jdbcType="VARCHAR" property="userroles" />
     <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
     <result column="updatetime" jdbcType="TIMESTAMP" property="updatetime" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, username, userroles, createtime, updatetime
+    id, user_info_id, userroles, createtime, updatetime
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -22,16 +22,16 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.gara.jpademo.model.UserRole" useGeneratedKeys="true">
-    insert into user_role (username, userroles, createtime, 
+    insert into user_role (user_info_id, userroles, createtime,
       updatetime)
-    values (#{userName,jdbcType=VARCHAR}, #{userroles,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP},
+    values (#{userInfo.id,jdbcType=VARCHAR}, #{userroles,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP},
       #{updatetime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.gara.jpademo.model.UserRole" useGeneratedKeys="true">
     insert into user_role
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="userName != null">
-        username,
+      <if test="userInfo.id != null">
+        user_info_id,
       </if>
       <if test="userroles != null">
         userroles,
@@ -44,8 +44,8 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="userName != null">
-        #{userName,jdbcType=VARCHAR},
+      <if test="userInfo.id != null">
+        #{userInfo.id,jdbcType=VARCHAR},
       </if>
       <if test="userroles != null">
         #{userroles,jdbcType=VARCHAR},
@@ -78,7 +78,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.gara.jpademo.model.UserRole">
     update user_role
-    set username = #{userName,jdbcType=VARCHAR},
+    set user_info_id = #{userInfo.id,jdbcType=VARCHAR},
       userroles = #{userroles,jdbcType=VARCHAR},
       createtime = #{createtime,jdbcType=TIMESTAMP},
       updatetime = #{updatetime,jdbcType=TIMESTAMP}

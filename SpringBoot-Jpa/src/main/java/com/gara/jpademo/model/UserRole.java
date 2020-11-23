@@ -1,5 +1,7 @@
 package com.gara.jpademo.model;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.Tolerate;
@@ -27,8 +29,8 @@ public class UserRole implements Serializable {
     @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "username", nullable = false)
-    private String userName;
+//    @Column(name = "username", nullable = false)
+//    private String userName;
 
     @Column(name = "userroles", nullable = false)
     private String userroles;
@@ -39,8 +41,22 @@ public class UserRole implements Serializable {
     @Column(name = "updatetime", nullable = false)
     private Date updatetime;
 
-    @ManyToOne(targetEntity = UserInfo.class)
+    // 这里设置 FetchType = lazy,获取时才会发起SQL查询
+    @JsonIgnore
+    @JSONField(serialize = false)
+    @ManyToOne(targetEntity = UserInfo.class, fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_info_id", referencedColumnName = "id")
     private UserInfo userInfo;
 
     private static final long serialVersionUID = 1L;
+
+    @Override
+    public String toString() {
+        return "UserRole{" +
+                "id=" + id +
+                ", userroles='" + userroles + '\'' +
+                ", createtime=" + createtime +
+                ", updatetime=" + updatetime +
+                '}';
+    }
 }
