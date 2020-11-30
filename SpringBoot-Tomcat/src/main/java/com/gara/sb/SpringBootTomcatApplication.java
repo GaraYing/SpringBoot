@@ -66,6 +66,7 @@ public class SpringBootTomcatApplication {
 
 		return args -> {
 			System.out.println("1. 当前webServer的实现类为： " + context.getWebServer().getClass().getName());
+			System.out.println(" 当前CustomerService的实现类为： " + context.getBean("customerService").getClass().getName());
 		};
 	}
 

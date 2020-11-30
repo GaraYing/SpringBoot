@@ -9,6 +9,7 @@ import org.springframework.validation.Validator;
 
 /**
  * @description: 核心配置类
+ * @note Sprig CGLIB提升不是为@Bean提供的，而是为了@Cofiguration类准备的
  * @author:  Gara
  * @createTime: 2019/12/16 10:33
  * @Version: 1.0

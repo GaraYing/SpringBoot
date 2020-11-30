@@ -2,14 +2,11 @@ package com.gara;
 
 import com.gara.sb.controller.UserControllerInterceptor;
 import com.gara.sb.property.SampleProperties;
-import com.gara.sb.validation.SamplePropertiesValidator;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.Bean;
-import org.springframework.validation.Validator;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 

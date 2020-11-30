@@ -3,6 +3,7 @@ package com.gara.sb.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Collections;
 import java.util.Map;
@@ -15,6 +16,7 @@ import java.util.Map;
 public class CustomerController {
 
     @RequestMapping("/index")
+    @ResponseBody
     public String index(){
         System.out.println("Controller");
         return "index";
