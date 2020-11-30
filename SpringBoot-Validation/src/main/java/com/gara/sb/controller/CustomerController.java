@@ -1,7 +1,7 @@
 package com.gara.sb.controller;
 
 import com.gara.sb.domain.Customer;
-import com.gara.sb.domain.ValidList;
+import com.gara.sb.validation.ValidList;
 import com.gara.sb.service.CustomerService;
 import com.gara.sb.validation.CustomerGroup;
 import com.gara.sbcommon.result.Result;
@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
 import java.util.List;
 
 /**

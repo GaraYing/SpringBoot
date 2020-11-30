@@ -1,4 +1,4 @@
-package com.gara.sb.domain;
+package com.gara.sb.validation;
 
 import lombok.Data;
 
@@ -9,10 +9,6 @@ import java.util.function.UnaryOperator;
 /**
  * @description:  校验对象集合作为请求参数, 正确输出校验信息
  * @see  <a href="https://stackoverflow.com/questions/28150405/validation-of-a-list-of-objects-in-spring"/>
- * @copyright: 深圳法大大网络科技有限公司 (c)2020
- * @author:  yingz@fadada.com
- * @createTime: 2020/11/30 17:52
- * @version: 2.2.9
 **/
 @Data
 public class ValidList<T> implements List<T> {
