@@ -1,8 +1,7 @@
 package com.gara.sb.validation.constraints;
 
-import com.gara.sb.validation.constraints.ValidCardNum;
 import org.apache.commons.lang3.ArrayUtils;
-import org.springframework.util.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -30,7 +29,7 @@ public class ValidCardNumConstraintValidator implements ConstraintValidator<Vali
 //        if (parts.length != 2) {
 //            return false;
 //        }
-
+        if (StringUtils.isBlank(value)) return true;
         String[] parts = value.split("-");
         if (ArrayUtils.getLength(parts) != 2) {
             return false;

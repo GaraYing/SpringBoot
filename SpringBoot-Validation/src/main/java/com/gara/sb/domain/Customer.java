@@ -3,6 +3,7 @@ package com.gara.sb.domain;
 import com.gara.sb.validation.CustomerGroup;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -18,11 +19,14 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(callSuper = true)
-public class Customer extends User {
+public class Customer /*extends User*/ {
 
     private Long customerId;
 
     @NotNull(message = "resource不能为空", groups = CustomerGroup.class)
-    @NotEmpty(message = "resource不能为空", groups = CustomerGroup.class)
+    @NotEmpty(message = "resource不能为空"/*, groups = CustomerGroup.class*/)
     private String resource;
+
+    @Length(max = 10, message = "名称长度不合法")
+    private String name;
 }

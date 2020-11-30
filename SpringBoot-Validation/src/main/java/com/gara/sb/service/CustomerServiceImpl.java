@@ -24,9 +24,9 @@ public class CustomerServiceImpl implements CustomerService{
         Customer customer = Customer.builder()
                 .customerId(0L)
                 .resource("测试")
-                .id(0L)
+//                .id(0L)
                 .name("测试机")
-                .cardNum("1234")
+//                .cardNum("1234")
                 .build();
         System.out.println(customer.toString());
     }

@@ -8,10 +8,7 @@ package com.gara.sb.validation.constraints;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
-import java.lang.annotation.Documented;
-import java.lang.annotation.Repeatable;
-import java.lang.annotation.Retention;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 
 import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
@@ -41,9 +38,9 @@ public @interface ValueOfEnum {
 
 
 	/**
-	 * Defines several {@link com.fadada.core.common.annotation.ValueOfEnum} annotations on the same element.
+	 * Defines several {@link ValueOfEnum} annotations on the same element.
 	 *
-	 * @see com.fadada.core.common.annotation.ValueOfEnum
+	 * @see
 	 */
 	@Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
 	@Retention(RUNTIME)

@@ -1,6 +1,7 @@
 package com.gara.sb.controller;
 
 import com.gara.sb.domain.Customer;
+import com.gara.sb.domain.ValidList;
 import com.gara.sb.service.CustomerService;
 import com.gara.sb.validation.CustomerGroup;
 import com.gara.sbcommon.result.Result;
@@ -13,6 +14,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+import java.util.List;
+
 /**
  * @description:
  * @createTime: 2019-10-08 10:13
@@ -20,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
  **/
 @RestController
 @Slf4j
+@Validated
 public class CustomerController {
 
     private final CustomerService customerService;
@@ -39,5 +44,11 @@ public class CustomerController {
     public String testSuperBuilder() {
         customerService.testSuperBuilder();
         return "success";
+    }
+
+    @PostMapping(value = "/test/list/validate")
+    public Result<List<Customer>> testListValidate(@RequestBody @Validated ValidList<Customer> customers) {
+        log.info("request params is: {}", customers );
+        return ResultGenerator.genSuccessResult(customers);
     }
 }

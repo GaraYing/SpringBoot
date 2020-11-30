@@ -1,0 +1,160 @@
+package com.gara.sb.domain;
+
+import lombok.Data;
+
+import javax.validation.Valid;
+import java.util.*;
+import java.util.function.UnaryOperator;
+
+/**
+ * @description:  校验对象集合作为请求参数, 正确输出校验信息
+ * @see  <a href="https://stackoverflow.com/questions/28150405/validation-of-a-list-of-objects-in-spring"/>
+ * @copyright: 深圳法大大网络科技有限公司 (c)2020
+ * @author:  yingz@fadada.com
+ * @createTime: 2020/11/30 17:52
+ * @version: 2.2.9
+**/
+@Data
+public class ValidList<T> implements List<T> {
+
+    @Valid
+    private List<T> list;
+
+    public ValidList() {
+        this.list = new ArrayList<T>();
+    }
+
+    public ValidList(List<T> list) {
+        this.list = list;
+    }
+
+    @Override
+    public int size() {
+        return list.size();
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return list.isEmpty();
+    }
+
+    @Override
+    public boolean contains(Object o) {
+        return list.contains(o);
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return list.iterator();
+    }
+
+    @Override
+    public Object[] toArray() {
+        return list.toArray();
+    }
+
+    @Override
+    public <T> T[] toArray(T[] a) {
+        return list.toArray(a);
+    }
+
+    @Override
+    public boolean add(T t) {
+        return list.add(t);
+    }
+
+    @Override
+    public boolean remove(Object o) {
+        return list.remove(o);
+    }
+
+    @Override
+    public boolean containsAll(Collection<?> c) {
+        return list.contains(c);
+    }
+
+    @Override
+    public boolean addAll(Collection<? extends T> c) {
+        return list.addAll(c);
+    }
+
+    @Override
+    public boolean addAll(int index, Collection<? extends T> c) {
+        return list.addAll(c);
+    }
+
+    @Override
+    public boolean removeAll(Collection<?> c) {
+        return list.removeAll(c);
+    }
+
+    @Override
+    public boolean retainAll(Collection<?> c) {
+        return list.retainAll(c);
+    }
+
+    @Override
+    public void replaceAll(UnaryOperator<T> operator) {
+        list.replaceAll(operator);
+    }
+
+    @Override
+    public void sort(Comparator<? super T> c) {
+        list.sort(c);
+    }
+
+    @Override
+    public void clear() {
+        list.clear();
+    }
+
+    @Override
+    public T get(int index) {
+        return list.get(index);
+    }
+
+    @Override
+    public T set(int index, T element) {
+        return list.set(index, element);
+    }
+
+    @Override
+    public void add(int index, T element) {
+        list.add(index, element);
+    }
+
+    @Override
+    public T remove(int index) {
+        return list.remove(index);
+    }
+
+    @Override
+    public int indexOf(Object o) {
+        return list.indexOf(o);
+    }
+
+    @Override
+    public int lastIndexOf(Object o) {
+        return list.lastIndexOf(o);
+    }
+
+    @Override
+    public ListIterator<T> listIterator() {
+        return list.listIterator();
+    }
+
+    @Override
+    public ListIterator<T> listIterator(int index) {
+        return list.listIterator(index);
+    }
+
+    @Override
+    public List<T> subList(int fromIndex, int toIndex) {
+        return list.subList(fromIndex, toIndex);
+    }
+
+    @Override
+    public Spliterator<T> spliterator() {
+        return list.spliterator();
+    }
+}
