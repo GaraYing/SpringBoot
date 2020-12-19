@@ -7,9 +7,9 @@ public enum StatusEnum {
     DISABLE(0,"禁用/已删除"),
     ENABLE(1,"启用");
 
-    private Integer code;
+    private final Integer code;
 
-    private String value;
+    private final String value;
 
     StatusEnum(Integer code, String value) {
         this.code = code;

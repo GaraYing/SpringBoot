@@ -30,8 +30,7 @@ public class User {
     private Integer type;
 
     @NotNull
-//    @ValidCardNum(message = "卡号必须以\"GARA\"开头 , 以数字结尾")
-    @ValidCardNum
+    @ValidCardNum(message = "卡号必须以\"GARA\"开头 , 以数字结尾")
     @ApiModelProperty(name = "", value = "卡号", example = "GARA-12121")
     private String cardNum;
     /**
