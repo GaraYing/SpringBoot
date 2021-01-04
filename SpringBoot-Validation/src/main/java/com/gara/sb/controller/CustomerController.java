@@ -24,6 +24,7 @@ import java.util.List;
 @RestController
 @Slf4j
 @Validated
+@RequestMapping(value = "/validate")
 public class CustomerController {
 
     private final CustomerService customerService;
