@@ -56,8 +56,13 @@ public class RabbitMqSendTest {
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
             String message = new String(delivery.getBody(), StandardCharsets.UTF_8);
             System.out.println(" [x] Received '" + message + "'");
+            // requeue all unacknowledged deliveries up to
+            // this delivery tag
+            channel.basicNack(delivery.getEnvelope().getDeliveryTag(), true, true);
         };
-        channel.basicConsume(QUEUE_NAME, true, deliverCallback, consumerTag -> { });
+        channel.basicConsume(QUEUE_NAME, true, deliverCallback, consumerTag -> {
+
+        });
     }
 
 }
