@@ -14,13 +14,13 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-@RabbitListener(queues = "hello")
 public class Receiver {
 
 //    @Autowired
 //    private AmqpTemplate rabbitTemplate;
 
     @RabbitHandler
+    @RabbitListener(queues = "hello")
     public void process(String hell0){
         System.out.println("Receiver: " + hell0);
     }
