@@ -1,26 +1,22 @@
 package com.gara.sb_mail;
 
 import freemarker.template.Template;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
 import javax.activation.FileDataSource;
 import javax.mail.internet.MimeMessage;
 import java.io.File;
-import java.nio.file.FileSystems;
 import java.util.HashMap;
 import java.util.Map;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
 public class SbMailApplicationTests {
 
@@ -29,7 +25,7 @@ public class SbMailApplicationTests {
 
 	@Test
 	public void contextLoads() {
-		Assert.assertEquals("ss","ss");
+		Assertions.assertEquals("ss","ss");
 	}
 
 	public static final String sender = "mailgara@163.com";

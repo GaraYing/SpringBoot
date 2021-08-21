@@ -17,10 +17,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("${server.error.path:${error.path:/error}}")
 public class MineErrorController implements ErrorController {
-    @Override
-    public String getErrorPath() {
-        return "/error";
-    }
+
+//    @Override
+//    public String getErrorPath() {
+//        return "/error";
+//    }
 
     /**
      * {"code":-1,"msg":"网络异常，请稍后重试","data":null}

@@ -3,25 +3,19 @@ package com.gara.jpademo;
 import com.gara.jpademo.model.UserInfo;
 import com.gara.jpademo.model.UserRole;
 import com.gara.jpademo.repository.*;
-import org.assertj.core.util.Lists;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.ThreadFactory;
 
-@RunWith(SpringRunner.class)
 @MapperScan(basePackages = "com.gara.jpademo")
 @SpringBootTest
 
@@ -92,7 +86,7 @@ public class JpaDemoApplicationTests {
         UserRole userRole = UserRole.builder().id(2).build();
         Example<UserRole> example = Example.of(userRole);
         Optional<UserRole> optional = userRoleExampleRepository.findOne(example);
-        Assert.assertTrue(optional.isPresent());
+        Assertions.assertTrue(optional.isPresent());
     }
 
 }

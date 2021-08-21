@@ -148,6 +148,8 @@ public class GlobalHttpExceptionHandler {
             case TRACE:
                 logger.trace(message, ex);
                 break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + logLevel);
         }
 
         //Tracer.logError(ex);

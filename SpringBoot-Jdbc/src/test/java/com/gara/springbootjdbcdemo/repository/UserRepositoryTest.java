@@ -1,9 +1,8 @@
 package com.gara.springbootjdbcdemo.repository;
 
 import com.gara.springbootjdbcdemo.SpringBootJdbcDemoApplicationTests;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
 
 public class UserRepositoryTest extends SpringBootJdbcDemoApplicationTests {
 

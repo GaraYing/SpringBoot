@@ -4,7 +4,7 @@ import com.gara.sb.event.EventPublisher;
 import com.gara.sb.event.MailTaskEventPublisherAware;
 import com.gara.sb.event.TaskFinishedEvent;
 import com.google.common.collect.Lists;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import javax.annotation.Resource;
 

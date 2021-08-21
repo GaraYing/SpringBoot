@@ -7,6 +7,26 @@
     <groupId>groupId</groupId>
     <artifactId>SpringBoot</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
+    <modules>
+        <module>SpringBoot-Parent</module>
+        <module>SpringBoot-Mail</module>
+        <module>SpringBoot-RabbitMQ</module>
+        <module>SpringBoot-Validation</module>
+        <module>SpringBoot-Shiro</module>
+        <module>SpringBoot-Common</module>
+        <module>SpringBoot-Demo1</module>
+        <module>SpringBoot-Demo2</module>
+        <module>SpringBoot-ErrorHandle</module>
+        <module>SpringBoot-Log</module>
+        <module>SpringBoot-Jdbc</module>
+        <module>SpringBoot-Jpa</module>
+        <module>SpringBoot-Mq</module>
+        <module>SpringBoot-Mybatis</module>
+        <module>SpringBoot-MyStarter</module>
+        <module>SpringBoot-Test</module>
+        <module>SpringBoot-Tomcat</module>
+    </modules>
     
 </project>

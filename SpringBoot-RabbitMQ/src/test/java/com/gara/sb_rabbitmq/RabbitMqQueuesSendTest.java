@@ -1,12 +1,10 @@
 package com.gara.sb_rabbitmq;
 
 import com.rabbitmq.client.*;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.autoconfigure.amqp.RabbitProperties;
 
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.concurrent.TimeoutException;
 
 public class RabbitMqQueuesSendTest {
 

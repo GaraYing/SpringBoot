@@ -4,7 +4,7 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.DeliverCallback;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.autoconfigure.amqp.RabbitProperties;
 
 import java.io.IOException;

@@ -1,7 +1,7 @@
 package com.gara.sb_rabbitmq.exchange;
 
 import com.rabbitmq.client.*;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.autoconfigure.amqp.RabbitProperties;
 
 import java.nio.charset.StandardCharsets;
