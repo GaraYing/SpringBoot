@@ -33,7 +33,7 @@ public class LogAspect {
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         Method method = signature.getMethod();
         Action action = method.getAnnotation(Action.class);
-        System.out.println("action名称 " + action.value()); // ⑤
+        System.out.println("action名称 " + action.value());
     }
 
     /**
