@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "https://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<!--
+	- Default SQL error codes for well-known databases.
+	- Can be overridden by definitions in a "sql-error-codes.xml" file
+	- in the root of the class path.
+	-
+	- If the Database Product Name contains characters that are invalid
+	- to use in the id attribute (like a space) then we need to add a property
+	- named "databaseProductName"/"databaseProductNames" that holds this value.
+	- If this property is present, then it will be used instead of the id for
+	- looking up the error codes based on the current database.
+	-->
+<beans>
+
+	<bean id="MySQL" class="org.springframework.jdbc.support.SQLErrorCodes">
+		<property name="databaseProductNames">
+			<list>
+				<value>MySQL</value>
+				<value>MariaDB</value>
+			</list>
+		</property>
+		<property name="badSqlGrammarCodes">
+			<value>1054,1064,1146</value>
+		</property>
+		<property name="duplicateKeyCodes">
+			<value>1062</value>
+		</property>
+		<property name="dataIntegrityViolationCodes">
+			<value>630,839,840,893,1169,1215,1216,1217,1364,1451,1452,1557</value>
+		</property>
+		<property name="dataAccessResourceFailureCodes">
+			<value>1</value>
+		</property>
+		<property name="cannotAcquireLockCodes">
+			<value>1205,3572</value>
+		</property>
+		<property name="deadlockLoserCodes">
+			<value>1213</value>
+		</property>
+		<property name="customTranslations">
+			<bean class="org.springframework.jdbc.support.CustomSQLErrorCodesTranslation">
+				<property name="errorCodes">
+					<value>1062</value>
+				</property>
+				<property name="exceptionClass">
+					<value>com.gara.springbootjdbcdemo.exception.CustomDuplicateKeyException</value>
+				</property>
+			</bean>
+		</property>
+	</bean>
+</beans>

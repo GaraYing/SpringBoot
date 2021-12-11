@@ -21,7 +21,7 @@ public class JavaCLient {
 
         CreateIndexResponse createIndexResponse = client.indices().create(new CreateIndexRequest("person_es"), RequestOptions.DEFAULT);
 
-        System.out.println("createIndexResponse.isAcknowledged() = " + createIndexResponse.isAcknowledged());
+        System.out.println("c  reateIndexResponse.isAcknowledged() = " + createIndexResponse.isAcknowledged());
 
         client.close();
     }

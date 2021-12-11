@@ -12,4 +12,5 @@
     <result column="sex" jdbcType="INTEGER" property="sex" />
     <result column="register_date" jdbcType="TIMESTAMP" property="registerDate" />
   </resultMap>
+  <!--https://plugins.zhile.io-->
 </mapper>
