@@ -21,6 +21,7 @@
         <module>SpringBoot-ErrorHandle</module>
         <module>SpringBoot-Log</module>
         <module>SpringBoot-Jdbc</module>
+        <module>SpringBoot-Elasticsearch</module>
         <module>SpringBoot-Jpa</module>
         <module>SpringBoot-Mq</module>
         <module>SpringBoot-Mybatis</module>

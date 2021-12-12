@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.gara.jpademo.repository.UserRoleDao">
-  <resultMap id="BaseResultMap" type="com.gara.jpademo.model.UserRole">
+<mapper namespace="com.gara.jpa.repository.UserRoleDao">
+  <resultMap id="BaseResultMap" type="com.gara.jpa.model.UserRole">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="user_info_id" jdbcType="VARCHAR" property="userInfo.id" />
     <result column="userroles" jdbcType="VARCHAR" property="userroles" />
@@ -21,13 +21,13 @@
     delete from user_role
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.gara.jpademo.model.UserRole" useGeneratedKeys="true">
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.gara.jpa.model.UserRole" useGeneratedKeys="true">
     insert into user_role (user_info_id, userroles, createtime,
       updatetime)
     values (#{userInfo.id,jdbcType=VARCHAR}, #{userroles,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP},
       #{updatetime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.gara.jpademo.model.UserRole" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.gara.jpa.model.UserRole" useGeneratedKeys="true">
     insert into user_role
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="userInfo.id != null">
@@ -58,7 +58,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.gara.jpademo.model.UserRole">
+  <update id="updateByPrimaryKeySelective" parameterType="com.gara.jpa.model.UserRole">
     update user_role
     <set>
       <if test="username != null">
@@ -76,7 +76,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.gara.jpademo.model.UserRole">
+  <update id="updateByPrimaryKey" parameterType="com.gara.jpa.model.UserRole">
     update user_role
     set user_info_id = #{userInfo.id,jdbcType=VARCHAR},
       userroles = #{userroles,jdbcType=VARCHAR},

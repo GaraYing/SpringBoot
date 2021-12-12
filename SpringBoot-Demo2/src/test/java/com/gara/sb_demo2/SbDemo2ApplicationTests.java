@@ -5,26 +5,23 @@ import com.gara.sb_demo2.vo.User;
 import com.gara.sb_demo2.vo.User2;
 import com.gara.sb_demo2.vo.UserMapper;
 import com.gara.sb_demo2.web.UserRepository;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.concurrent.Future;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
 @Transactional
 public class SbDemo2ApplicationTests {
 
 
-	@Before
+	@BeforeEach
 	public void setUp() {
 		userRepository.deleteAll();
 	}
@@ -39,7 +36,7 @@ public class SbDemo2ApplicationTests {
 
 		userMapper.insert("AA",25);
 		User user = userMapper.findByName("AA");
-		Assert.assertEquals(25, user.getAge().intValue());
+		Assertions.assertEquals(25, user.getAge().intValue());
 
 //		Map<String, Object> map = new HashMap<>();
 //		map.put("name", "CCC");
@@ -54,16 +51,16 @@ public class SbDemo2ApplicationTests {
 		// insert一条数据，并select出来验证
 		userMapper.insert("AAA", 20);
 		User u = userMapper.findByName("AAA");
-		Assert.assertEquals(20, u.getAge().intValue());
+		Assertions.assertEquals(20, u.getAge().intValue());
 		// update一条数据，并select出来验证
 		u.setAge(30);
 		userMapper.update(u);
 		u = userMapper.findByName("AAA");
-		Assert.assertEquals(30, u.getAge().intValue());
+		Assertions.assertEquals(30, u.getAge().intValue());
 		// 删除这条数据，并select验证
 		userMapper.delete(u.getId());
 		u = userMapper.findByName("AAA");
-		Assert.assertEquals(null, u);
+		Assertions.assertEquals(null, u);
 	}
 
 	@Test
@@ -71,8 +68,8 @@ public class SbDemo2ApplicationTests {
 	public void testUserMapper2() throws Exception {
 		List<User> userList = userMapper.findAll();
 		for(User user : userList) {
-			Assert.assertEquals(null, user.getId());
-			Assert.assertNotEquals(null, user.getName());
+			Assertions.assertEquals(null, user.getId());
+			Assertions.assertNotEquals(null, user.getName());
 		}
 	}
 
@@ -86,17 +83,17 @@ public class SbDemo2ApplicationTests {
 		userRepository.save(new User2(1L, "didi", 30));
 		userRepository.save(new User2(2L, "mama", 40));
 		userRepository.save(new User2(3L, "kaka", 50));
-		Assert.assertEquals(3, userRepository.findAll().size());
+		Assertions.assertEquals(3, userRepository.findAll().size());
 
 		// 删除一个User，再验证User总数
 		User2 u = userRepository.findByUsername("didi");
 		userRepository.delete(u);
-		Assert.assertEquals(2, userRepository.findAll().size());
+		Assertions.assertEquals(2, userRepository.findAll().size());
 
 		// 删除一个User，再验证User总数
 		u = userRepository.findByUsername("mama");
 		userRepository.delete(u);
-		Assert.assertEquals(1, userRepository.findAll().size());
+		Assertions.assertEquals(1, userRepository.findAll().size());
 
 	}
 

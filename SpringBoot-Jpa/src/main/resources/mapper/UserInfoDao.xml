@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.gara.jpademo.repository.UserInfoDao">
-  <resultMap id="BaseResultMap" type="com.gara.jpademo.model.UserInfo">
+<mapper namespace="com.gara.jpa.repository.UserInfoDao">
+  <resultMap id="BaseResultMap" type="com.gara.jpa.model.UserInfo">
     <id column="Id" jdbcType="INTEGER" property="id" />
     <result column="username" jdbcType="VARCHAR" property="userName" />
     <result column="password" jdbcType="VARCHAR" property="password" />
@@ -73,7 +73,7 @@
   <sql id="Base_Column_List">
     Id, username, `password`, usertype, enabled, realname, qq, email, tel
   </sql>
-  <select id="selectByExample" parameterType="com.gara.jpademo.model.UserInfoExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.gara.jpa.model.UserInfoExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -97,13 +97,13 @@
     delete from user_info
     where Id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.gara.jpademo.model.UserInfoExample">
+  <delete id="deleteByExample" parameterType="com.gara.jpa.model.UserInfoExample">
     delete from user_info
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" keyColumn="Id" keyProperty="id" parameterType="com.gara.jpademo.model.UserInfoExample" useGeneratedKeys="true">
+  <insert id="insert" keyColumn="Id" keyProperty="id" parameterType="com.gara.jpa.model.UserInfoExample" useGeneratedKeys="true">
     insert into user_info (username, `password`, usertype, 
       enabled, realname, qq, 
       email, tel)
@@ -111,7 +111,7 @@
       #{enabled,jdbcType=INTEGER}, #{realname,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, 
       #{email,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" keyColumn="Id" keyProperty="id" parameterType="com.gara.jpademo.model.UserInfoExample" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="Id" keyProperty="id" parameterType="com.gara.jpa.model.UserInfoExample" useGeneratedKeys="true">
     insert into user_info
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="username != null">
@@ -166,7 +166,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.gara.jpademo.model.UserInfoExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.gara.jpa.model.UserInfoExample" resultType="java.lang.Long">
     select count(*) from user_info
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -222,7 +222,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.gara.jpademo.model.UserInfoExample">
+  <update id="updateByPrimaryKeySelective" parameterType="com.gara.jpa.model.UserInfoExample">
     update user_info
     <set>
       <if test="username != null">
@@ -252,7 +252,7 @@
     </set>
     where Id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.gara.jpademo.model.UserInfoExample">
+  <update id="updateByPrimaryKey" parameterType="com.gara.jpa.model.UserInfoExample">
     update user_info
     set username = #{username,jdbcType=VARCHAR},
       `password` = #{password,jdbcType=VARCHAR},
