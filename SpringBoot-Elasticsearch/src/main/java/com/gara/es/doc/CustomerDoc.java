@@ -5,6 +5,7 @@ import org.springframework.data.annotation.*;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
+import org.springframework.data.elasticsearch.annotations.Setting;
 
 import java.time.LocalDateTime;
 
@@ -12,6 +13,7 @@ import java.time.LocalDateTime;
  * @author GARA
  */
 @Document(indexName = "customer")
+@Setting(settingPath = "setting/setting.json")
 public class CustomerDoc {
 
     @Id
@@ -53,6 +55,7 @@ public class CustomerDoc {
     @CreatedBy
     @Field(name = "created_by")
     private String createdBy;
+    
     @LastModifiedBy
     @Field(name = "updated_by")
     private String updatedBy;
