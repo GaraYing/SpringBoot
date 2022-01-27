@@ -41,15 +41,15 @@ public class CustomerDoc {
     @Field(name = "first_name", type = FieldType.Text, analyzer = "simple")
     private String lastName;
 
-    @Field(name = "birth_date")
+    @Field(name = "birth_date", type = FieldType.Date_Nanos)
     private LocalDateTime birthDate;
 
     @CreatedDate
-    @Field(name = "create_date")
+    @Field(name = "create_date", type = FieldType.Date_Nanos)
     private LocalDateTime createDate;
 
     @LastModifiedDate
-    @Field(name = "update_date")
+    @Field(name = "update_date", type = FieldType.Date_Nanos)
     private LocalDateTime updateDate;
 
     @CreatedBy

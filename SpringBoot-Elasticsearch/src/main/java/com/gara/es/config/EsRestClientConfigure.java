@@ -1,7 +1,6 @@
 package com.gara.es.config;
 
 import org.apache.http.HttpHost;
-import org.apache.http.client.methods.HttpHead;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;
@@ -16,7 +15,6 @@ import org.springframework.data.elasticsearch.config.AbstractElasticsearchConfig
 import org.springframework.http.HttpHeaders;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
