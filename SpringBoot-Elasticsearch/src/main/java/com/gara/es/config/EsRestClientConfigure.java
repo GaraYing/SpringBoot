@@ -12,11 +12,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.elasticsearch.client.ClientConfiguration;
 import org.springframework.data.elasticsearch.client.RestClients;
 import org.springframework.data.elasticsearch.config.AbstractElasticsearchConfiguration;
+import org.springframework.data.elasticsearch.core.convert.ElasticsearchCustomConversions;
 import org.springframework.http.HttpHeaders;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 
 /**
  * @author GARA
@@ -47,5 +49,11 @@ public class EsRestClientConfigure extends AbstractElasticsearchConfiguration {
             return httpHeaders;
         }).build();
         return RestClients.create(clientConfiguration).rest();
+    }
+
+    @Override
+    public ElasticsearchCustomConversions elasticsearchCustomConversions() {
+        return new ElasticsearchCustomConversions(
+                Arrays.asList(new ElasticsearchCustomConversionConfig.TimestampToLong(), new ElasticsearchCustomConversionConfig.LongToTimestamp()));
     }
 }

@@ -35,10 +35,10 @@ public class CustomerDoc {
     @Field(name = "sex", type = FieldType.Keyword)
     private Integer sex;
 
-    @Field(name = "first_name", type = FieldType.Text, analyzer = "standard")
+    @Field(name = "first_name", type = FieldType.Text, analyzer = "ik_max_word")
     private String firstName;
 
-    @Field(name = "first_name", type = FieldType.Text, analyzer = "simple")
+    @Field(name = "last_name", type = FieldType.Text, analyzer = "ik_max_word")
     private String lastName;
 
     @Field(name = "birth_date", type = FieldType.Date_Nanos)
@@ -59,6 +59,7 @@ public class CustomerDoc {
     @LastModifiedBy
     @Field(name = "updated_by")
     private String updatedBy;
+
 
     public Long getId() {
         return id;
@@ -113,7 +114,7 @@ public class CustomerDoc {
     }
 
     public void setFirstName(String firstName) {
-        firstName = firstName;
+        this.firstName = firstName;
     }
 
     public String getLastName() {

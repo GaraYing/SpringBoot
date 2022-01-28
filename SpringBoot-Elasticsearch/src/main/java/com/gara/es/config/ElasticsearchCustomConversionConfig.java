@@ -11,17 +11,16 @@ import org.springframework.data.elasticsearch.core.convert.MappingElasticsearchC
 import org.springframework.data.elasticsearch.core.mapping.SimpleElasticsearchMappingContext;
 
 import java.sql.Timestamp;
-import java.util.Arrays;
 
 @Configuration
 public class ElasticsearchCustomConversionConfig {
 
 
-    @Bean
-    public ElasticsearchCustomConversions elasticsearchCustomConversion() {
-        return new ElasticsearchCustomConversions(
-                Arrays.asList(new TimestampToLong(), new LongToTimestamp()));
-    }
+//    @Bean
+//    public ElasticsearchCustomConversions elasticsearchCustomConversions() {
+//        return new ElasticsearchCustomConversions(
+//                Arrays.asList(new TimestampToLong(), new LongToTimestamp()));
+//    }
 
     @Bean
     public ElasticsearchConverter elasticsearchConverter(SimpleElasticsearchMappingContext mappingContext, ElasticsearchCustomConversions elasticsearchCustomConversions) {

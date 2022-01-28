@@ -28,7 +28,7 @@ public class CustomerDocRepositoryTest extends EsDemoApplicationTests {
 
     @Test
     public void testInsertData() {
-        for (int i = 0; i < 100000; i++) {
+        for (int i = 0; i < 10000; i++) {
             CustomerDoc customerDoc = new CustomerDoc();
             customerDoc.setId((long) (i + 1));
             customerDoc.setCode(random.nextInt(100) + "");
@@ -41,8 +41,8 @@ public class CustomerDocRepositoryTest extends EsDemoApplicationTests {
             customerDoc.setBirthDate(LocalDateTime.now());
             customerDoc.setCreateDate(LocalDateTime.now());
             customerDoc.setUpdateDate(LocalDateTime.now());
-            customerDoc.setCreatedBy("sys");
-            customerDoc.setUpdatedBy("sys");
+            customerDoc.setCreatedBy("system");
+            customerDoc.setUpdatedBy("system");
             customerDocRepository.save(customerDoc);
         }
 
