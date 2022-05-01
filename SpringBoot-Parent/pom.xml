@@ -22,7 +22,7 @@
         <lombok.version>1.18.8</lombok.version>
         <fastjson.version>1.2.60</fastjson.version>
         <jedis.version>2.9.3</jedis.version>
-        <spring-boot.version>2.5.4</spring-boot.version>
+        <spring-boot.version>2.5.12</spring-boot.version>
     </properties>
     <dependencyManagement>
         <dependencies>
