@@ -5,6 +5,7 @@ import org.springframework.data.annotation.*;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
+import org.springframework.data.elasticsearch.annotations.Setting;
 
 import java.time.LocalDateTime;
 
@@ -12,6 +13,7 @@ import java.time.LocalDateTime;
  * @author GARA
  */
 @Document(indexName = "customer")
+@Setting(settingPath = "setting/setting.json")
 public class CustomerDoc {
 
     @Id
@@ -33,29 +35,31 @@ public class CustomerDoc {
     @Field(name = "sex", type = FieldType.Keyword)
     private Integer sex;
 
-    @Field(name = "first_name", type = FieldType.Text, analyzer = "standard")
+    @Field(name = "first_name", type = FieldType.Text, analyzer = "ik_max_word")
     private String firstName;
 
-    @Field(name = "first_name", type = FieldType.Text, analyzer = "simple")
+    @Field(name = "last_name", type = FieldType.Text, analyzer = "ik_max_word")
     private String lastName;
 
-    @Field(name = "birth_date")
+    @Field(name = "birth_date", type = FieldType.Date_Nanos)
     private LocalDateTime birthDate;
 
     @CreatedDate
-    @Field(name = "create_date")
+    @Field(name = "create_date", type = FieldType.Date_Nanos)
     private LocalDateTime createDate;
 
     @LastModifiedDate
-    @Field(name = "update_date")
+    @Field(name = "update_date", type = FieldType.Date_Nanos)
     private LocalDateTime updateDate;
 
     @CreatedBy
     @Field(name = "created_by")
     private String createdBy;
+    
     @LastModifiedBy
     @Field(name = "updated_by")
     private String updatedBy;
+
 
     public Long getId() {
         return id;
@@ -110,7 +114,7 @@ public class CustomerDoc {
     }
 
     public void setFirstName(String firstName) {
-        firstName = firstName;
+        this.firstName = firstName;
     }
 
     public String getLastName() {

@@ -1,0 +1,17 @@
+spring:
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: 'true'
+    show-sql: 'true'
+  elasticsearch:
+    rest:
+      uris: localhost:9200
+      username: elastic
+      password: changeme
+#logging:
+#  level:
+#    org:
+#      hibernate:
+#        type: TRACE
