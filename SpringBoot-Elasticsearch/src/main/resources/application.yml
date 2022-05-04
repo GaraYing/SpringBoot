@@ -10,8 +10,6 @@ spring:
       uris: localhost:9200
       username: elastic
       password: changeme
-#logging:
-#  level:
-#    org:
-#      hibernate:
-#        type: TRACE
+logging:
+  level:
+    org.springframework.data.elasticsearch.client.WIRE: trace
