@@ -18,6 +18,12 @@ import org.elasticsearch.client.indices.CreateIndexResponse;
 import org.elasticsearch.common.xcontent.XContentType;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.search.aggregations.Aggregation;
+import org.elasticsearch.search.aggregations.AggregationBuilder;
+import org.elasticsearch.search.aggregations.AggregationBuilders;
+import org.elasticsearch.search.aggregations.bucket.terms.ParsedDoubleTerms;
+import org.elasticsearch.search.aggregations.bucket.terms.Terms;
+import org.elasticsearch.search.aggregations.metrics.ParsedSum;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.junit.jupiter.api.Test;
 
@@ -131,5 +137,34 @@ public class RestHighLevelClientTest extends EsDemoApplicationTests {
         searchRequest.source(searchSourceBuilder);
         SearchResponse response = restHighLevelClient.search(searchRequest, RequestOptions.DEFAULT);
         System.out.println("response.getHits().getTotalHits() = " + response.getHits().getTotalHits());
+    }
+
+    @Test
+    void testAggregate() throws IOException {
+        SearchRequest searchRequest = new SearchRequest("products_new");
+        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+        searchSourceBuilder.query(QueryBuilders.matchAllQuery());
+        // 聚合处理
+        searchSourceBuilder.aggregation(AggregationBuilders.terms("price_group").field("price"));
+        searchRequest.source(searchSourceBuilder);
+        SearchResponse response = restHighLevelClient.search(searchRequest, RequestOptions.DEFAULT);
+        ParsedDoubleTerms priceGroup = response.getAggregations().get("price_group");
+        for (Terms.Bucket bucket : priceGroup.getBuckets()) {
+            System.out.println("bucket.getKey() = " + bucket.getKey());
+            System.out.println("bucket.getDocCount() = " + bucket.getDocCount());
+        }
+    }
+
+    @Test
+    void testAggregateFunction() throws IOException {
+        SearchRequest searchRequest = new SearchRequest("products_new");
+        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+        searchSourceBuilder.query(QueryBuilders.matchAllQuery());
+        // 聚合处理
+        searchSourceBuilder.aggregation(AggregationBuilders.sum("price_sum").field("price"));
+        searchRequest.source(searchSourceBuilder);
+        SearchResponse response = restHighLevelClient.search(searchRequest, RequestOptions.DEFAULT);
+        ParsedSum parsedSum = response.getAggregations().get("price_sum");
+        System.out.println("parsedSum.getValue() = " + parsedSum.getValue());
     }
 }
