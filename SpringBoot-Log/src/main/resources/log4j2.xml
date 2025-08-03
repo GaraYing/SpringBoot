@@ -1,33 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="WARN">
-    <Appenders>
-        <Console name="Console" target="SYSTEM_OUT" follow="true">
-            <PatternLayout>
-                <pattern>%d %p %C{1.} [%t] %m%n</pattern>
-            </PatternLayout>
-        </Console>
-        <!-- 按日期每天生成log文件 -->
-        <RollingFile name="RollingFile" fileName="temp/CL_BATCH.log"
-                     filePattern="temp/CL_BATCH-%d{yyyy-MM-dd}.log">
-            <PatternLayout pattern="%d %p %C{1.} [%t] %m%n"/>
-            <Policies>
-                <TimeBasedTriggeringPolicy interval="1"/>
-            </Policies>
+<Configuration status="WARN" monitorInterval="30">
+    <Properties>
+        <!-- 定义日志文件存储路径 -->
+        <Property name="LOG_HOME">./logs</Property>
+        <Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Property>
+        <Property name="ARCHIVE_PATTERN">${LOG_HOME}/$${date:yyyy-MM}/app-%d{yyyy-MM-dd}-%i.log.gz</Property>
+        <springProperty/>
+    </Properties>
 
-            <!-- log文件只打印error级别信息 -->
-            <Filters>
-                <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
-            </Filters>
+
+    <Appenders>
+        <!-- 控制台输出 -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </Console>
+
+        <!-- 滚动文件输出 -->
+        <RollingFile name="RollingFile" fileName="${LOG_HOME}/app.log"
+                     filePattern="${ARCHIVE_PATTERN}">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <!-- 每天午夜滚动日志 -->
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <!-- 文件大小超过 10MB 时滚动 -->
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+            </Policies>
+            <!-- 保留最近 30 天的日志 -->
+            <DefaultRolloverStrategy max="30"/>
         </RollingFile>
+
+        <!-- 异步日志 -->
+        <Async name="Async" bufferSize="1024">
+            <AppenderRef ref="RollingFile"/>
+        </Async>
     </Appenders>
-    <!--输出到文件中-->
-    <!--<AppenderRef ref="File" />-->
 
     <Loggers>
-        <!-- 输出info级别信息 -->
-        <Root level="info">
-            <AppenderRef ref="Console" />
-            <AppenderRef ref="RollingFile" />
+        <!-- Spring Boot 框架日志 -->
+        <Logger name="org.springframework" level="INFO" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="Async"/>
+        </Logger>
+
+        <!-- Hibernate 日志 -->
+        <Logger name="org.hibernate" level="WARN" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="Async"/>
+        </Logger>
+
+        <!-- SQL 日志 -->
+        <Logger name="org.hibernate.SQL" level="DEBUG" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="Async"/>
+        </Logger>
+
+        <!-- 自定义包日志 -->
+        <AsyncLogger  name="com.gara" level="INFO" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="Async"/>
+        </AsyncLogger >
+
+        <!-- Root 日志器 -->
+        <Root level="INFO">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="Async"/>
         </Root>
     </Loggers>
 </Configuration>
